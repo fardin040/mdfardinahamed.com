@@ -7,6 +7,8 @@ import Script from 'next/script'
 import { useTina } from 'tinacms/dist/react'
 import type { HomeQuery } from '../tina/__generated__/types'
 
+import Image from 'next/image'
+
 // Helper to safely render markdown-like bold/italic in strings if needed (basic implementation)
 function renderText(text: string) {
     if (!text) return text;
@@ -50,11 +52,12 @@ export function HomeClient(props: {
                 <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
                 <div className="w-full max-w-4xl mx-auto flex flex-col items-start md:items-center text-left md:text-center">
                     {siteContent.hero?.profilePicture && (
-                        <div className="mb-8 relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-tr from-primary to-accent shadow-xl shadow-primary/20">
-                            <img
+                        <div className="mb-8 relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-tr from-primary to-accent shadow-xl shadow-primary/20 overflow-hidden">
+                            <Image
                                 src={siteContent.hero.profilePicture}
                                 alt={siteContent.footer?.name || "Profile Picture"}
-                                className="w-full h-full object-cover rounded-full border-4 border-background"
+                                fill
+                                className="object-cover rounded-full border-4 border-background"
                             />
                         </div>
                     )}
