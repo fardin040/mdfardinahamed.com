@@ -32,6 +32,10 @@ export const metadata = {
   },
   alternates: {
     canonical: 'https://mdfardinahamed.com',
+  },
+  icons: {
+    icon: '/favicon.svg?v=2',
+    apple: '/favicon.svg?v=2',
   }
 }
 
