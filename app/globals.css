@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --muted: #6b7280;
+}
+
+.dark {
+  --bg: #0b1220;
+  --muted: #9ca3af;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-gray-900 antialiased;
+  background-color: var(--bg);
+}
+
+.dark body {
+  @apply bg-[#071023] text-gray-100;
+}
+
+.container {
+  @apply max-w-4xl mx-auto px-6;
+}
+
+/* subtle animations */
+.fade-in { animation: fadeIn 600ms ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0);} }
