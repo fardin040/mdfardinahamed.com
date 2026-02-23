@@ -1,8 +1,8 @@
 {
   "hero": {
-    "profilePicture": "",
+    "profilePicture": "/placeholder_avatar.png",
     "badge": "Available for Research Opportunities",
-    "headlinePrefix": "Securing",
+    "headlinePrefix": "Protecting",
     "headlineSuffix": " the Next Generation of Networks",
     "subheadlineLine1": "BSc Electronics & Telecommunication Engineering",
     "subheadlineLine2": "Prospective MSc Cybersecurity Candidate",
