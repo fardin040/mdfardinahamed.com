@@ -1,11 +1,17 @@
 import React from 'react'
+import { siteContent } from '../data/content'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 dark:border-gray-800 py-8">
-      <div className="container text-center text-sm text-gray-600 dark:text-gray-400">
-        <p>© {new Date().getFullYear()} Md Fardin Ahamed — Electronics & Telecommunication Engineering</p>
-        <p className="mt-2">Designed for MSc applications and cybersecurity recruiters.</p>
+    <footer className="border-t border-border/50 py-12 mt-16 bg-gradient-to-t from-background to-transparent">
+      <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <p className="font-medium">
+          &copy; {new Date().getFullYear()} {siteContent.footer.name}
+        </p>
+        <p className="text-center md:text-right">
+          {siteContent.footer.tagline}<br />
+          <span className="text-xs opacity-70">{siteContent.footer.subTagline}</span>
+        </p>
       </div>
     </footer>
   )

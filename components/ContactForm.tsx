@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<'idle'|'sending'|'sent'|'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -32,21 +32,48 @@ export default function ContactForm() {
   }
 
   return (
-    <form className="max-w-xl mx-auto" onSubmit={handleSubmit}>
-      <div className="grid gap-3">
-        <label className="text-sm">Name
-          <input name="name" required className="w-full mt-1 p-2 border rounded" />
+    <form className="w-full glass p-8 rounded-2xl shadow-lg relative overflow-hidden" onSubmit={handleSubmit}>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
+      <div className="grid gap-6">
+        <label className="block text-sm font-medium text-foreground">
+          Full Name
+          <input
+            name="name"
+            required
+            placeholder="Jane Doe"
+            className="w-full mt-2 p-3 bg-background/50 border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-muted-foreground/50"
+          />
         </label>
-        <label className="text-sm">Email
-          <input name="email" type="email" required className="w-full mt-1 p-2 border rounded" />
+        <label className="block text-sm font-medium text-foreground">
+          Email Address
+          <input
+            name="email"
+            type="email"
+            required
+            placeholder="jane@example.com"
+            className="w-full mt-2 p-3 bg-background/50 border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-muted-foreground/50"
+          />
         </label>
-        <label className="text-sm">Message
-          <textarea name="message" rows={5} required className="w-full mt-1 p-2 border rounded" />
+        <label className="block text-sm font-medium text-foreground">
+          Message
+          <textarea
+            name="message"
+            rows={5}
+            required
+            placeholder="How can we collaborate?"
+            className="w-full mt-2 p-3 bg-background/50 border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-muted-foreground/50 resize-y"
+          />
         </label>
-        <div className="flex items-center gap-3">
-          <button type="submit" disabled={status === 'sending'} className="px-4 py-2 bg-primary text-white rounded">{status === 'sending' ? 'Sending...' : 'Send'}</button>
-          {status === 'sent' && <span className="text-sm text-green-600">Thanks — message sent.</span>}
-          {status === 'error' && <span className="text-sm text-red-600">Error sending message.</span>}
+        <div className="flex items-center gap-4 pt-2">
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-all shadow-md shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {status === 'sending' ? 'Sending...' : 'Send Message'}
+          </button>
+          {status === 'sent' && <span className="text-sm font-medium text-emerald-500 fade-in">Thanks! Message sent.</span>}
+          {status === 'error' && <span className="text-sm font-medium text-destructive fade-in">Error sending message.</span>}
         </div>
       </div>
     </form>
