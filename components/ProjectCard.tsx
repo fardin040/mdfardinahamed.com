@@ -29,11 +29,21 @@ export default function ProjectCard({ title, description, tech, github, demo }: 
         </div>
       </div>
       <p className="text-sm text-muted-foreground mb-6 flex-grow leading-relaxed">{description}</p>
-      <div className="flex flex-wrap gap-2 mt-auto">
-        {tech.map(t => (
-          <span key={t} className="text-xs font-medium px-2.5 py-1 bg-secondary text-secondary-foreground rounded-full border border-border/50">{t}</span>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {tech.map((item, i) => (
+          <span key={i} className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-semibold tracking-wide shadow-sm border border-accent/20">
+            {item}
+          </span>
         ))}
       </div>
+      {github && (
+        <div className="mt-auto pt-4 border-t border-border/50">
+          <a href={github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full px-4 py-2 bg-secondary/50 text-secondary-foreground hover:bg-secondary hover:text-foreground font-medium rounded-lg transition-colors border border-border/50 hover:border-border">
+            <Github className="w-4 h-4 mr-2" />
+            View Source Code
+          </a>
+        </div>
+      )}
     </article>
   )
 }

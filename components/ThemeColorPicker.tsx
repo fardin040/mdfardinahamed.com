@@ -31,7 +31,7 @@ export default function ThemeColorPicker() {
                     key={t.name}
                     onClick={() => changeTheme(t.name)}
                     aria-label={`Switch to ${t.name} theme`}
-                    className={`w-4 h-4 rounded-full ${t.color} transition-transform hover:scale-125 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-border ${currentTheme === t.name ? 'ring-2 ring-offset-1 ring-border shadow-md scale-110' : ''
+                    className={`w-6 h-6 rounded-full ${t.color} transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border ${currentTheme === t.name ? 'ring-2 ring-offset-2 ring-border shadow-md scale-105' : ''
                         }`}
                 />
             ))}

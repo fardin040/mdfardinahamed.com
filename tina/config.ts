@@ -42,6 +42,7 @@ export default defineConfig({
             name: "hero",
             label: "Hero Section",
             fields: [
+              { type: "image", name: "profilePicture", label: "Profile Picture" },
               { type: "string", name: "badge", label: "Badge Text" },
               { type: "string", name: "headlinePrefix", label: "Headline Prefix" },
               { type: "string", name: "headlineSuffix", label: "Headline Suffix" },

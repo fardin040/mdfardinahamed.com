@@ -11,10 +11,10 @@ export default function Nav() {
       <header className="glass rounded-full px-6 py-3 flex items-center justify-between w-full max-w-4xl pointer-events-auto transition-all shadow-lg shadow-black/5 dark:shadow-white/5">
         <Link href="/" className="text-lg font-heading font-bold text-primary dark:text-white tracking-tight">{siteContent.footer.name}</Link>
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</Link>
-          <Link href="/#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Projects</Link>
-          <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
-          <Link href="/resume.pdf" target="_blank" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Resume</Link>
+          <Link href="/#about" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">About</Link>
+          <Link href="/#projects" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Projects</Link>
+          <Link href="/blog" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Blog</Link>
+          <Link href="/resume.pdf" target="_blank" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Resume</Link>
           <div className="h-4 w-px bg-border mx-2"></div>
           <ThemeColorPicker />
           <ThemeToggle />

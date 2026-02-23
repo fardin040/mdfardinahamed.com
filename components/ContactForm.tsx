@@ -34,7 +34,7 @@ export default function ContactForm() {
   return (
     <form className="w-full glass p-8 rounded-2xl shadow-lg relative overflow-hidden" onSubmit={handleSubmit}>
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
-      <div className="grid gap-6">
+      <div className="space-y-6">
         <label className="block text-sm font-medium text-foreground">
           Full Name
           <input
