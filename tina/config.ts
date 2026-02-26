@@ -88,6 +88,24 @@ export default defineConfig({
           },
           {
             type: "object",
+            name: "certificates",
+            label: "Certificates Section",
+            fields: [
+              { type: "string", name: "title", label: "Section Title" },
+              { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+              {
+                type: "object", name: "list", label: "Certificate List", list: true,
+                fields: [
+                  { type: "string", name: "title", label: "Certificate Title" },
+                  { type: "string", name: "issuer", label: "Issuer (e.g., Coursera, Cisco)" },
+                  { type: "string", name: "date", label: "Date Earned" },
+                  { type: "string", name: "link", label: "Certificate Link" }
+                ]
+              }
+            ]
+          },
+          {
+            type: "object",
             name: "projects",
             label: "Projects Section",
             fields: [

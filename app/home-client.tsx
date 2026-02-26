@@ -103,7 +103,7 @@ export function HomeClient(props: {
                     {siteContent.skills?.title}
                     <div className="h-8 w-2 bg-accent rounded-full hidden md:block"></div>
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4 md:px-0">
                     {siteContent.skills?.categories?.map((cat, idx) => (
                         <div key={cat?.id || idx} className={`glass p-6 rounded-2xl border-t-4 border-t-${cat?.color} hover:-translate-y-1 transition-transform`}>
                             <h3 className="font-heading font-bold text-xl mb-3 text-foreground">{cat?.title}</h3>
@@ -112,6 +112,58 @@ export function HomeClient(props: {
                     ))}
                 </div>
             </section>
+
+            {/* Certificates Section */}
+            {(siteContent as any).certificates && (
+                <section id="certificates" className="py-20 border-t border-border/50 flex flex-col items-center">
+                    <div className="mb-12 text-center max-w-3xl px-4 md:px-0">
+                        <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-6">
+                            <div className="h-8 w-2 bg-primary/70 rounded-full hidden md:block"></div>
+                            {(siteContent as any).certificates?.title}
+                            <div className="h-8 w-2 bg-primary/70 rounded-full hidden md:block"></div>
+                        </h2>
+                        {((siteContent as any).certificates?.description) && (
+                            <p className="text-muted-foreground md:text-lg text-base">
+                                {(siteContent as any).certificates?.description}
+                            </p>
+                        )}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl px-4 md:px-0">
+                        {(siteContent as any).certificates?.list?.map((cert: any, i: number) => (
+                            <div key={i} className="glass p-6 rounded-2xl border border-border/30 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10 group-hover:bg-primary/10 transition-colors"></div>
+
+                                <div>
+                                    <div className="flex items-start justify-between mb-4">
+                                        <div className="p-3 bg-primary/10 text-primary rounded-xl shrink-0">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+                                        </div>
+                                        <span className="text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap ml-4">
+                                            {cert?.date}
+                                        </span>
+                                    </div>
+
+                                    <h3 className="font-heading font-bold text-xl text-foreground mb-2 leading-tight">
+                                        {cert?.title}
+                                    </h3>
+                                    <p className="text-muted-foreground font-medium mb-6">
+                                        {cert?.issuer}
+                                    </p>
+                                </div>
+
+                                {cert?.link && cert.link !== "#" && (
+                                    <div className="mt-auto">
+                                        <a href={cert.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                                            Verify Credential <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                        </a>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
 
             {/* Projects Section */}
             <section id="projects" className="py-20 border-t border-border/50 flex flex-col items-center">

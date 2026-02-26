@@ -52,6 +52,24 @@
       }
     ]
   },
+  "certificates": {
+    "title": "Certifications & Training",
+    "description": "Continuous learning is essential in cybersecurity. Here are some of the professional certifications and courses I have completed.",
+    "list": [
+      {
+        "title": "Google Cybersecurity Professional Certificate",
+        "issuer": "Coursera",
+        "date": "2023",
+        "link": "#"
+      },
+      {
+        "title": "Introduction to Cybersecurity",
+        "issuer": "Cisco Networking Academy",
+        "date": "2022",
+        "link": "#"
+      }
+    ]
+  },
   "projects": {
     "title": "Relevant Technical Projects",
     "description": "Practical applications demonstrating my understanding of low-level networking and system security engineering.",
