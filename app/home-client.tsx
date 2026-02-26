@@ -62,7 +62,7 @@ export function HomeClient(props: {
                         </div>
                     )}
                     <div className="inline-flex items-center rounded-full border border-border bg-background/50 px-4 py-1.5 text-sm font-medium text-muted-foreground mb-8 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
-                        <span className="flex h-2.5 w-2.5 rounded-full bg-accent mr-3 animate-pulse"></span>
+                        <span className="flex h-2.5 w-2.5 rounded-full bg-green-500 mr-3 animate-pulse"></span>
                         {siteContent.hero?.badge}
                     </div>
                     <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold font-heading tracking-tight leading-[1.1] text-foreground max-w-4xl drop-shadow-sm">
