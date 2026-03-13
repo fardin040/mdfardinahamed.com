@@ -1,11 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import { listWriteups } from '../../lib/markdown'
+import { listWriteupsData } from '../../lib/tina'
 
 type Entry = { slug: string; title: string; description: string; date: string; category?: string; tags?: string[] }
 
 export default async function WriteupsPage() {
-  const writeups: Entry[] = await listWriteups()
+  const writeups: Entry[] =
+    process.env.NODE_ENV === 'production'
+      ? await listWriteups()
+      : await listWriteupsData()
 
   return (
     <section className="container py-16 fade-in">

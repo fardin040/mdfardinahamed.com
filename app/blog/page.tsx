@@ -1,11 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import { listPosts } from '../../lib/markdown'
+import { listBlogPostsData } from '../../lib/tina'
 
 type Post = { slug: string; title: string; description: string; date: string; category?: string; tags?: string[] }
 
 export default async function Blog() {
-  const posts: Post[] = await listPosts()
+  const posts: Post[] =
+    process.env.NODE_ENV === 'production'
+      ? await listPosts()
+      : await listBlogPostsData()
   return (
     <section className="container py-16 fade-in">
       <div className="max-w-3xl mb-10">

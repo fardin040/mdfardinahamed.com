@@ -2,6 +2,7 @@ import './globals.css'
 import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import { getHomePageData } from '../lib/tina'
 
 export const metadata = {
   metadataBase: new URL('https://mdfardinahamed.com'),
@@ -53,14 +54,19 @@ export const metadata = {
   }
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const home =
+    process.env.NODE_ENV === 'production'
+      ? null
+      : await getHomePageData()
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className="font-sans">
         <div className="min-h-screen flex flex-col pt-16">
-          <Nav />
+          <Nav data={home?.data} query={home?.query} variables={home?.variables} />
           <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">{children}</main>
-          <Footer />
+          <Footer data={home?.data} query={home?.query} variables={home?.variables} />
         </div>
       </body>
     </html>
