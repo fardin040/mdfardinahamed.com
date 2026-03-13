@@ -10,13 +10,21 @@ Quick setup
 npm install
 ```
 
-2. Run development server
+1. Run development server
 
 ```bash
 npm run dev
 ```
 
-3. Build for production
+This starts TinaCMS in local editing mode on top of Next.js, so `/admin` can edit content collections.
+
+If you want the site without Tina's local CMS tooling, run:
+
+```bash
+npm run dev:next
+```
+
+1. Build for production
 
 ```bash
 npm run build
@@ -26,7 +34,10 @@ npm start
 Available scripts
 
 - `dev`: Runs Next.js in development mode.
+- `dev`: Runs TinaCMS local mode with Next.js so `/admin` can edit content.
+- `dev:next`: Runs plain Next.js development mode without Tina.
 - `build`: Builds production assets.
+- `cms:build`: Generates the Tina admin app into `public/admin` for environments with valid Tina credentials.
 - `start`: Runs the production server after build.
 - `lint`: (if configured) Runs linting.
 
@@ -38,6 +49,7 @@ Project notes
 - Technical writeups live in `content/writeups/*.md`.
 - Both collections support frontmatter fields such as `title`, `date`, `description`, `category`, and `tags`.
 - Markdown content is rendered server-side through `lib/markdown.ts`.
+- TinaCMS can now edit `content/page/home.json`, blog posts, and writeups from `/admin` during local development.
 
 Contact form
 
@@ -63,8 +75,16 @@ Deployment (Vercel)
 Important environment variables
 
 - `FORMSPREE_ENDPOINT` — (optional) The Formspree endpoint URL (e.g. `https://formspree.io/f/your-id`). When set, contact form submissions will be forwarded to this endpoint from the serverless function. If not set, submissions will be logged in the server logs for testing.
+- `NEXT_PUBLIC_TINA_CLIENT_ID` — Required only if you want to generate a production Tina admin build against Tina Cloud.
+- `TINA_TOKEN` — Required only if you want to generate a production Tina admin build against Tina Cloud.
 
-4. Deploy — Vercel will run `npm run build` automatically.
+1. Deploy — Vercel will run `npm run build` automatically.
+
+CMS notes
+
+1. For local editing, use `npm run dev` and open `/admin`.
+2. For a production Tina admin build, set valid Tina credentials and run `npm run cms:build` before deployment.
+3. Without a generated Tina admin app, `/admin` falls back to an informational placeholder page.
 
 Notes for reviewers / maintainers
 
