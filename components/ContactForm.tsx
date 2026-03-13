@@ -32,48 +32,48 @@ export default function ContactForm() {
   }
 
   return (
-    <form className="w-full glass p-8 rounded-2xl shadow-lg relative overflow-hidden" onSubmit={handleSubmit}>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
+    <form className="panel relative w-full overflow-hidden" onSubmit={handleSubmit}>
+      <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary via-amber-400 to-primary"></div>
       <div className="space-y-6">
-        <label className="block text-sm font-medium text-foreground">
+        <label className="block text-sm font-medium text-slate-800">
           Full Name
           <input
             name="name"
             required
             placeholder="Jane Doe"
-            className="w-full mt-2 p-3 bg-background/50 border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-muted-foreground/50"
+            className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 outline-none transition-all placeholder:text-slate-400 focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/20"
           />
         </label>
-        <label className="block text-sm font-medium text-foreground">
+        <label className="block text-sm font-medium text-slate-800">
           Email Address
           <input
             name="email"
             type="email"
             required
             placeholder="jane@example.com"
-            className="w-full mt-2 p-3 bg-background/50 border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-muted-foreground/50"
+            className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 outline-none transition-all placeholder:text-slate-400 focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/20"
           />
         </label>
-        <label className="block text-sm font-medium text-foreground">
+        <label className="block text-sm font-medium text-slate-800">
           Message
           <textarea
             name="message"
             rows={5}
             required
-            placeholder="How can we collaborate?"
-            className="w-full mt-2 p-3 bg-background/50 border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-muted-foreground/50 resize-y"
+            placeholder="Tell me about the project, research collaboration, or role you have in mind."
+            className="mt-2 w-full resize-y rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 outline-none transition-all placeholder:text-slate-400 focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/20"
           />
         </label>
-        <div className="flex items-center gap-4 pt-2">
+        <div className="flex flex-wrap items-center gap-4 pt-2">
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-all shadow-md shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="rounded-2xl bg-slate-950 px-6 py-3 font-medium text-white shadow-md shadow-slate-900/20 transition-all hover:-translate-y-0.5 hover:bg-primary disabled:cursor-not-allowed disabled:opacity-70"
           >
             {status === 'sending' ? 'Sending...' : 'Send Message'}
           </button>
-          {status === 'sent' && <span className="text-sm font-medium text-emerald-500 fade-in">Thanks! Message sent.</span>}
-          {status === 'error' && <span className="text-sm font-medium text-destructive fade-in">Error sending message.</span>}
+          {status === 'sent' && <span className="fade-in text-sm font-medium text-emerald-600">Thanks! Message sent.</span>}
+          {status === 'error' && <span className="fade-in text-sm font-medium text-destructive">Error sending message.</span>}
         </div>
       </div>
     </form>

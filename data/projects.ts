@@ -20,6 +20,31 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'arduino-security-monitor',
+    title: 'Arduino Security Monitor',
+    summary: 'Embedded monitoring project for sensing environmental and physical security events in a small lab setup.',
+    description:
+      'An Arduino-based monitoring system designed to observe motion, temperature, and entry-state changes in a controlled room or lab cabinet. The project combines simple embedded electronics with alerting logic to study how low-cost hardware can support situational awareness.',
+    problemSolved:
+      'It provides an accessible way to prototype physical security telemetry, event-triggered alarms, and sensor-driven monitoring without relying on expensive commercial systems.',
+    tools: ['Arduino IDE', 'Serial Monitor', 'Breadboard Prototyping'],
+    technologies: ['Arduino Uno', 'C/C++', 'Embedded Sensors', 'Buzzer Alerts'],
+    github: 'https://github.com/fardin040/arduino-security-monitor',
+    image: '/projects/arduino-security-monitor-overview.svg',
+    screenshots: [
+      {
+        src: '/projects/arduino-security-monitor-wiring.svg',
+        alt: 'Wiring layout for Arduino security monitor',
+        caption: 'Sensor and alert wiring layout used to connect motion detection, threshold sensing, and audible notification.'
+      },
+      {
+        src: '/projects/arduino-security-monitor-output.svg',
+        alt: 'Serial output from Arduino security monitor',
+        caption: 'Event stream showing timestamped sensor changes and alert conditions captured during testing.'
+      }
+    ]
+  },
+  {
     slug: 'network-traffic-analyzer',
     title: 'Network Traffic Analyzer',
     summary: 'Packet inspection utility for studying TCP/IP behavior, protocol flow, and suspicious traffic patterns.',

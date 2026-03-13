@@ -4,44 +4,66 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
-import { Github, Linkedin, Mail, Shield, TerminalSquare } from 'lucide-react'
+import {
+  ArrowUpRight,
+  Cpu,
+  Github,
+  GraduationCap,
+  Linkedin,
+  Mail,
+  Radar,
+  Shield,
+  TerminalSquare,
+} from 'lucide-react'
 import ProjectCard from '../components/ProjectCard'
 import ContactForm from '../components/ContactForm'
 import { projects } from '../data/projects'
-import { writeupCategories, writeupPreviews } from '../data/writeups'
+import { writeupPreviews } from '../data/writeups'
 import { siteContent as staticSiteContent } from '../data/content'
 
 const skillGroups = [
   {
-    title: 'Security Tools',
+    title: 'Security Tooling',
+    description: 'Focused lab work around packet inspection, active reconnaissance, and defensive testing workflows.',
     color: 'primary',
-    skills: [
-      { name: 'Wireshark', level: 88 },
-      { name: 'Nmap', level: 84 },
-      { name: 'Burp Suite', level: 76 },
-      { name: 'Metasploit', level: 68 },
-      { name: 'Snort', level: 70 }
-    ]
+    skills: ['Wireshark', 'Nmap', 'Burp Suite', 'Snort', 'Metasploit'],
   },
   {
-    title: 'Programming',
+    title: 'Programming Stack',
+    description: 'Systems-heavy scripting and implementation work for utilities, parsers, and embedded experiments.',
     color: 'accent',
-    skills: [
-      { name: 'C', level: 86 },
-      { name: 'Python', level: 80 },
-      { name: 'JavaScript', level: 72 },
-      { name: 'Bash', level: 78 }
-    ]
+    skills: ['C', 'Python', 'JavaScript', 'Bash', 'Arduino C++'],
   },
   {
-    title: 'Systems',
+    title: 'Research Focus',
+    description: 'Evidence-driven study across networks, operating systems, protocol behavior, and forensics.',
     color: 'primary',
-    skills: [
-      { name: 'Linux', level: 84 },
-      { name: 'TCP/IP', level: 88 },
-      { name: 'Active Directory', level: 62 }
-    ]
-  }
+    skills: ['TCP/IP', 'Linux', 'Digital Forensics', 'Cryptographic Protocols', 'Lab Design'],
+  },
+]
+
+const highlightStats = [
+  { label: 'Core Direction', value: 'Network Security' },
+  { label: 'Current Track', value: 'MSc Preparation' },
+  { label: 'Working Style', value: 'Labs + Writeups' },
+]
+
+const focusCards = [
+  {
+    title: 'Protocol Analysis',
+    description: 'Studying how systems reveal state through packet traces, handshake logic, and transport-layer behavior.',
+    icon: Radar,
+  },
+  {
+    title: 'Security Engineering',
+    description: 'Building practical tools that make host telemetry, scanning mechanics, and event signals easier to inspect.',
+    icon: Cpu,
+  },
+  {
+    title: 'Graduate Research',
+    description: 'Writing with clarity, preserving evidence, and turning experiments into publication-ready technical narratives.',
+    icon: GraduationCap,
+  },
 ]
 
 function renderText(text: string) {
@@ -70,7 +92,10 @@ function renderText(text: string) {
   })
 }
 
-function getSocialLink(socials: Array<{ name?: string | null; link?: string | null } | null | undefined> | null | undefined, key: string) {
+function getSocialLink(
+  socials: Array<{ name?: string | null; link?: string | null } | null | undefined> | null | undefined,
+  key: string
+) {
   return socials?.find((social) => social?.name?.toLowerCase().includes(key.toLowerCase()))?.link || '#'
 }
 
@@ -92,295 +117,371 @@ export function HomeClient(props: {
     url: 'https://mdfardinahamed.com',
     jobTitle: 'Cybersecurity Student and Future Security Researcher',
     alumniOf: 'Chittagong University of Engineering & Technology',
-    sameAs: siteContent.contact?.socials?.map((social) => social?.link) || []
+    sameAs: siteContent.contact?.socials?.map((social) => social?.link) || [],
   }
 
   return (
     <>
       <Script id="schema-person" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="relative pt-24 pb-16 md:pt-40 md:pb-32 overflow-hidden fade-in flex items-center min-h-[85vh]">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-        <div className="w-full max-w-5xl mx-auto flex flex-col items-start md:items-center text-left md:text-center">
-          {siteContent.hero?.profilePicture && (
-            <div className="mb-8 relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-tr from-primary to-accent shadow-xl shadow-primary/20 overflow-hidden">
-              <Image
-                src={siteContent.hero.profilePicture}
-                alt={siteContent.footer?.name || 'Profile Picture'}
-                fill
-                className="object-cover rounded-full border-4 border-background"
-              />
-            </div>
-          )}
+      <section className="hero-shell relative overflow-hidden px-4 pb-20 pt-28 md:px-0 md:pt-36">
+        <div className="hero-orb hero-orb-left" />
+        <div className="hero-orb hero-orb-right" />
+        <div className="container relative">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="fade-in">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur">
+                <span className="mr-3 h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                {siteContent.hero?.badge}
+              </div>
 
-          <div className="inline-flex items-center rounded-full border border-border bg-background/50 px-4 py-1.5 text-sm font-medium text-muted-foreground mb-8 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-green-500 mr-3 animate-pulse" />
-            {siteContent.hero?.badge}
-          </div>
+              <h1 className="mt-8 max-w-4xl font-heading text-5xl font-black leading-[1.02] text-slate-950 md:text-7xl lg:text-[5.25rem]">
+                <span className="block text-slate-950">{siteContent.hero?.headlinePrefix}</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-sky-500 to-amber-500">
+                  {siteContent.hero?.headlineSuffix}
+                </span>
+              </h1>
 
-          <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold font-heading tracking-tight leading-[1.1] text-foreground max-w-4xl drop-shadow-sm">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-accent drop-shadow-sm">{siteContent.hero?.headlinePrefix}</span>
-            {siteContent.hero?.headlineSuffix}
-          </h1>
+              <p className="mt-6 max-w-3xl text-xl font-medium leading-relaxed text-slate-700 md:text-2xl">
+                {siteContent.hero?.subheadlineLine1}
+                <span className="mx-3 hidden text-primary/40 md:inline">/</span>
+                {siteContent.hero?.subheadlineLine2}
+              </p>
 
-          <p className="mt-8 text-2xl md:text-3xl text-muted-foreground font-medium max-w-3xl leading-snug">
-            {siteContent.hero?.subheadlineLine1} <br className="hidden md:block" />
-            {siteContent.hero?.subheadlineLine2}
-          </p>
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl">
+                {siteContent.hero?.description}
+              </p>
 
-          <p className="mt-8 text-lg md:text-xl text-muted-foreground/80 max-w-3xl leading-relaxed">
-            {siteContent.hero?.description}
-          </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a
+                  href={siteContent.hero?.primaryCta?.link || '#projects'}
+                  className="inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/20 transition hover:-translate-y-1 hover:bg-slate-900"
+                >
+                  {siteContent.hero?.primaryCta?.text || 'View Projects'}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={siteContent.hero?.secondaryCta?.link || '/resume.pdf'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white/90 px-7 py-4 text-base font-semibold text-slate-800 transition hover:-translate-y-1 hover:border-primary/40 hover:text-primary"
+                >
+                  {siteContent.hero?.secondaryCta?.text || 'Download Resume'}
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-transparent bg-primary/10 px-7 py-4 text-base font-semibold text-primary transition hover:-translate-y-1 hover:bg-primary/15"
+                >
+                  Contact
+                </a>
+              </div>
 
-          <div className="mt-12 flex flex-wrap gap-5">
-            <a href="#projects" className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 text-lg">View Projects</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-secondary text-secondary-foreground font-semibold rounded-xl hover:bg-secondary/80 transition-all border border-border hover:-translate-y-1 text-lg">Download Resume</a>
-            <a href="#contact" className="px-8 py-4 bg-background/80 text-foreground font-semibold rounded-xl hover:bg-background transition-all border border-border hover:-translate-y-1 text-lg">Contact</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="py-20 border-t border-border/50 flex flex-col items-center text-center">
-        <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-8">
-          <div className="h-8 w-2 bg-primary rounded-full hidden md:block" />
-          About Me
-          <div className="h-8 w-2 bg-primary rounded-full hidden md:block" />
-        </h2>
-
-        <div className="text-foreground/90 space-y-6 text-lg md:text-xl leading-relaxed max-w-4xl glass p-8 md:p-12 rounded-3xl text-left md:text-center shadow-lg">
-          {siteContent.about?.paragraphs?.map((paragraph, index) => (
-            <p key={index}>{renderText(paragraph || '')}</p>
-          ))}
-          <p>I am Md Fardin Ahamed, a cybersecurity-focused student building a portfolio around secure systems, protocol behavior, and evidence-driven technical work. My academic base is a <strong className="text-foreground">BSc in Electrical and Telecommunication Engineering at CUET</strong>, and my long-term goal is to pursue an <strong className="text-foreground">MSc in Cybersecurity</strong>.</p>
-          <p>My strongest interests are network security, protocol analysis, intrusion detection, and digital forensics. I learn best through practical labs, packet captures, controlled environments, and writing down findings clearly enough for other engineers and researchers to review.</p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 w-full max-w-6xl mt-10 px-4 md:px-0">
-          <div className="glass p-6 rounded-2xl text-left">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Education</p>
-            <h3 className="font-heading font-semibold text-xl text-foreground">CUET</h3>
-            <p className="text-muted-foreground mt-2">BSc in Electrical and Telecommunication Engineering with strong grounding in networks and communication systems.</p>
-          </div>
-          <div className="glass p-6 rounded-2xl text-left">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Career Goal</p>
-            <h3 className="font-heading font-semibold text-xl text-foreground">MSc in Cybersecurity</h3>
-            <p className="text-muted-foreground mt-2">Pursuing graduate study to deepen research capability in network defense, forensics, and secure infrastructure.</p>
-          </div>
-          <div className="glass p-6 rounded-2xl text-left">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research Interests</p>
-            <h3 className="font-heading font-semibold text-xl text-foreground">Security and Analysis</h3>
-            <p className="text-muted-foreground mt-2">Network security, protocol analysis, intrusion detection, and digital forensics across real-world system traces.</p>
-          </div>
-          <div className="glass p-6 rounded-2xl text-left">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Learning Philosophy</p>
-            <h3 className="font-heading font-semibold text-xl text-foreground">Hands-on First</h3>
-            <p className="text-muted-foreground mt-2">I prefer labs, controlled experiments, and repeatable observations that connect theory to operational reality.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" className="py-20 border-t border-border/50 flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-12">
-          <div className="h-8 w-2 bg-accent rounded-full hidden md:block" />
-          Technical Skills
-          <div className="h-8 w-2 bg-accent rounded-full hidden md:block" />
-        </h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-6xl px-4 md:px-0">
-          {skillGroups.map((group) => (
-            <div key={group.title} className="glass p-6 rounded-2xl border border-border/50">
-              <h3 className="font-heading font-bold text-xl mb-6 text-foreground">{group.title}</h3>
-              <div className="space-y-4">
-                {group.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-medium text-foreground">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-secondary overflow-hidden">
-                      <div className={`h-full rounded-full ${group.color === 'primary' ? 'bg-primary' : 'bg-accent'}`} style={{ width: `${skill.level}%` }} />
-                    </div>
+              <div className="mt-12 grid gap-4 sm:grid-cols-3">
+                {highlightStats.map((item) => (
+                  <div key={item.label} className="rounded-3xl border border-white/70 bg-white/70 p-5 shadow-lg shadow-slate-200/40 backdrop-blur">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">{item.label}</p>
+                    <p className="mt-3 text-lg font-bold text-slate-900">{item.value}</p>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
+
+            <div className="fade-up">
+              <div className="relative rounded-[2rem] border border-white/80 bg-white/75 p-5 shadow-[0_30px_80px_-35px_rgba(15,23,42,0.35)] backdrop-blur-xl">
+                <div className="absolute -right-5 -top-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 shadow-lg">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-700">Current Aim</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-900">Research-ready cybersecurity portfolio</p>
+                </div>
+
+                {siteContent.hero?.profilePicture && (
+                  <div className="relative aspect-[4/4.3] overflow-hidden rounded-[1.75rem] bg-slate-200">
+                    <Image
+                      src={siteContent.hero.profilePicture}
+                      alt={siteContent.footer?.name || 'Profile Picture'}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                )}
+
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-2xl bg-slate-950 p-5 text-white">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Primary Lens</p>
+                    <p className="mt-3 text-xl font-bold">Secure systems through observable evidence.</p>
+                  </div>
+                  <div className="rounded-2xl bg-gradient-to-br from-primary/10 via-white to-amber-100 p-5">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Preferred Workflow</p>
+                    <p className="mt-3 text-lg font-bold text-slate-900">Capture, test, document, refine.</p>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {['Packet Tracing', 'Forensics', 'Protocol Research', 'Embedded Projects'].map((tag) => (
+                    <span key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="section-shell border-t border-slate-200/80">
+        <div className="container">
+          <div className="section-intro">
+            <span className="section-kicker">About</span>
+            <h2 className="section-title">{siteContent.about?.title || 'Academic Background & Research Interests'}</h2>
+            <p className="section-copy">
+              A focused portfolio around networks, protocol behavior, defensive engineering, and research communication.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="panel space-y-6 text-lg leading-8 text-slate-700">
+              {siteContent.about?.paragraphs?.map((paragraph, index) => (
+                <p key={index}>{renderText(paragraph || '')}</p>
+              ))}
+              <p>
+                I work best when learning produces artifacts: packet captures, parsers, lab notes, tool prototypes, and
+                structured writeups that another engineer can review and reproduce.
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {focusCards.map((item) => {
+                const Icon = item.icon
+                return (
+                  <article key={item.title} className="panel">
+                    <div className="inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-5 font-heading text-xl font-bold text-slate-950">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" className="section-shell border-t border-slate-200/80">
+        <div className="container">
+          <div className="section-intro">
+            <span className="section-kicker">Capabilities</span>
+            <h2 className="section-title">Technical strengths built through repeatable lab work</h2>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {skillGroups.map((group) => (
+              <div key={group.title} className="panel">
+                <div className={`h-1.5 w-20 rounded-full ${group.color === 'primary' ? 'bg-primary' : 'bg-amber-500'}`} />
+                <h3 className="mt-6 font-heading text-2xl font-bold text-slate-950">{group.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{group.description}</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {group.skills.map((skill) => (
+                    <span key={skill} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {(siteContent as any).certificates && (
-        <section id="certificates" className="py-20 border-t border-border/50 flex flex-col items-center">
-          <div className="mb-12 text-center max-w-3xl px-4 md:px-0">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-6">
-              <div className="h-8 w-2 bg-primary/70 rounded-full hidden md:block" />
-              {(siteContent as any).certificates?.title}
-              <div className="h-8 w-2 bg-primary/70 rounded-full hidden md:block" />
-            </h2>
-            {(siteContent as any).certificates?.description && (
-              <p className="text-muted-foreground md:text-lg text-base">{(siteContent as any).certificates?.description}</p>
-            )}
-          </div>
+        <section id="certificates" className="section-shell border-t border-slate-200/80">
+          <div className="container">
+            <div className="section-intro">
+              <span className="section-kicker">Credentials</span>
+              <h2 className="section-title">{(siteContent as any).certificates?.title}</h2>
+              <p className="section-copy">{(siteContent as any).certificates?.description}</p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl px-4 md:px-0">
-            {(siteContent as any).certificates?.list?.map((cert: any, index: number) => (
-              <div key={index} className="glass p-6 rounded-2xl border border-border/30 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10 group-hover:bg-primary/10 transition-colors" />
-                <div>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 bg-primary/10 text-primary rounded-xl shrink-0">
-                      <Shield className="w-6 h-6" />
+            <div className="grid gap-6 md:grid-cols-2">
+              {(siteContent as any).certificates?.list?.map((cert: any, index: number) => (
+                <div
+                  key={index}
+                  className="panel relative overflow-hidden border-slate-200/80 bg-gradient-to-br from-white via-white to-primary/5"
+                >
+                  <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-full bg-amber-100/70" />
+                  <div className="relative">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
+                        <Shield className="h-6 w-6" />
+                      </div>
+                      <span className="rounded-full bg-slate-950 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
+                        {cert?.date}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap ml-4">{cert?.date}</span>
+                    <h3 className="mt-6 font-heading text-2xl font-bold text-slate-950">{cert?.title}</h3>
+                    <p className="mt-2 text-base font-medium text-slate-600">{cert?.issuer}</p>
+                    {cert?.link && cert.link !== '#' && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                      >
+                        Verify credential
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    )}
                   </div>
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-2 leading-tight">{cert?.title}</h3>
-                  <p className="text-muted-foreground font-medium mb-6">{cert?.issuer}</p>
                 </div>
-                {cert?.link && cert.link !== '#' && (
-                  <div className="mt-auto">
-                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors">Verify Credential</a>
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
       )}
 
-      <section id="projects" className="py-20 border-t border-border/50 flex flex-col items-center">
-        <div className="mb-16 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-6">
-            <div className="h-8 w-2 bg-primary rounded-full hidden md:block" />
-            Featured Projects
-            <div className="h-8 w-2 bg-primary rounded-full hidden md:block" />
-          </h2>
-          <p className="text-muted-foreground md:text-xl text-lg">Project work focused on network visibility, host telemetry, vulnerability research, and practical systems thinking.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl px-4 md:px-0">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              slug={project.slug}
-              title={project.title}
-              description={project.description}
-              problemSolved={project.problemSolved}
-              tech={project.technologies}
-              tools={project.tools}
-              image={project.image}
-              github={project.github}
-              demo={project.liveDemo}
-            />
-          ))}
-        </div>
-      </section>
+      <section id="projects" className="section-shell border-t border-slate-200/80">
+        <div className="container">
+          <div className="section-intro">
+            <span className="section-kicker">Projects</span>
+            <h2 className="section-title">Practical security and systems projects with clear technical intent</h2>
+            <p className="section-copy">
+              Each project is designed to make protocol mechanics, host behavior, or attack surface analysis easier to inspect.
+            </p>
+          </div>
 
-      <section id="writeups" className="py-20 border-t border-border/50 flex flex-col items-center">
-        <div className="mb-14 text-center max-w-3xl px-4 md:px-0">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-6">
-            <div className="h-8 w-2 bg-accent rounded-full hidden md:block" />
-            Research and Writeups
-            <div className="h-8 w-2 bg-accent rounded-full hidden md:block" />
-          </h2>
-          <p className="text-muted-foreground md:text-xl text-lg">Technical articles, lab notes, and concise writeups that document how I approach cybersecurity problems.</p>
-        </div>
-
-        <div className="flex flex-wrap gap-3 justify-center mb-10 px-4 md:px-0">
-          {writeupCategories.map((category) => (
-            <span key={category} className="px-4 py-2 rounded-full bg-secondary/70 text-sm font-medium text-secondary-foreground border border-border/60">{category}</span>
-          ))}
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 w-full max-w-6xl px-4 md:px-0">
-          {writeupPreviews.map((writeup) => (
-            <article key={writeup.slug} className="glass p-6 rounded-2xl border border-border/50 h-full flex flex-col">
-              <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">{writeup.category}</p>
-              <h3 className="font-heading font-semibold text-2xl text-foreground">{writeup.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-grow">{writeup.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {writeup.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold border border-accent/20">{tag}</span>
-                ))}
-              </div>
-              <Link href={`/writeups/${writeup.slug}`} className="mt-6 inline-flex items-center text-primary font-semibold">Read writeup</Link>
-            </article>
-          ))}
-        </div>
-
-        <Link href="/writeups" className="mt-10 inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:bg-primary/90 hover:-translate-y-1 transition-all shadow-lg shadow-primary/20 text-lg">Browse all writeups</Link>
-      </section>
-
-      <section id="blog" className="py-24 border-t border-border/50 relative overflow-hidden flex flex-col items-center text-center">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl -z-10" />
-        <div className="max-w-4xl glass p-12 rounded-3xl shadow-xl border border-border/50">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-6">
-            <div className="h-8 w-2 bg-accent rounded-full hidden md:block" />
-            Blog and Research Log
-            <div className="h-8 w-2 bg-accent rounded-full hidden md:block" />
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">A practical learning log covering packet analysis, network security, cryptography fundamentals, TryHackMe progress, and cybersecurity lab work.</p>
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {['Packet Analysis', 'Network Security', 'Cryptography', 'TryHackMe Writeups', 'Cybersecurity Labs'].map((tag) => (
-              <span key={tag} className="px-4 py-2 rounded-full bg-background/70 border border-border/50 text-sm font-medium text-foreground/80">{tag}</span>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                slug={project.slug}
+                title={project.title}
+                description={project.description}
+                problemSolved={project.problemSolved}
+                tech={project.technologies}
+                tools={project.tools}
+                image={project.image}
+                github={project.github}
+                demo={project.liveDemo}
+              />
             ))}
           </div>
-          <Link href="/blog" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:bg-primary/90 hover:-translate-y-1 transition-all shadow-lg shadow-primary/20 text-lg">
-            Explore the blog
+        </div>
+      </section>
+
+      <section id="writeups" className="section-shell border-t border-slate-200/80">
+        <div className="container">
+          <div className="section-intro">
+            <span className="section-kicker">Writeups</span>
+            <h2 className="section-title">Research notes that show how I think, test, and explain</h2>
+          </div>
+
+          <div className="mb-8 flex flex-wrap gap-3">
+            {['Networking', 'Lab Notes', 'Linux', 'Cryptography', 'Incident Thinking'].map((category) => (
+              <span key={category} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                {category}
+              </span>
+            ))}
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {writeupPreviews.map((writeup) => (
+              <article key={writeup.slug} className="panel flex h-full flex-col">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{writeup.category}</p>
+                <h3 className="mt-4 font-heading text-2xl font-bold text-slate-950">{writeup.title}</h3>
+                <p className="mt-3 flex-grow text-sm leading-7 text-slate-600">{writeup.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {writeup.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <Link href={`/writeups/${writeup.slug}`} className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">
+                  Read writeup
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <Link
+            href="/writeups"
+            className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-7 py-4 font-semibold text-white transition hover:-translate-y-1"
+          >
+            Browse all writeups
+            <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
 
-      <section id="contact" className="py-20 border-t border-border/50 flex flex-col items-center">
-        <div className="mb-16 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading flex items-center justify-center gap-3 mb-6">
-            <div className="h-8 w-2 bg-primary rounded-full hidden md:block" />
-            Contact
-            <div className="h-8 w-2 bg-primary rounded-full hidden md:block" />
-          </h2>
-          <p className="text-muted-foreground text-lg md:text-xl">{siteContent.contact?.description}</p>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-12 w-full max-w-6xl px-4 md:px-0">
-          <div className="flex-1">
-            <ContactForm />
+      <section id="blog" className="section-shell border-t border-slate-200/80">
+        <div className="container">
+          <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-primary p-10 text-center text-white shadow-[0_30px_80px_-35px_rgba(37,99,235,0.5)] md:p-14">
+            <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-100">
+              Blog
+            </span>
+            <h2 className="mx-auto mt-6 max-w-3xl font-heading text-4xl font-black leading-tight md:text-5xl">
+              A public research log for packet analysis, scanning theory, labs, and security learning milestones
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-200">
+              I use the blog to turn learning into publishable notes, with emphasis on clarity, reproducibility, and technical depth.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {['Packet Analysis', 'Network Security', 'Cryptography', 'TryHackMe', 'Cybersecurity Labs'].map((tag) => (
+                <span key={tag} className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <Link
+              href="/blog"
+              className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-4 font-semibold text-slate-950 transition hover:-translate-y-1"
+            >
+              Explore the blog
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
-          <div className="lg:w-[360px] space-y-6">
-            <div className="glass p-6 rounded-2xl flex items-start gap-4">
-              <div className="p-3 bg-primary/10 text-primary rounded-xl">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-foreground">Email</h4>
-                <a href={`mailto:${siteContent.contact?.email}`} className="text-muted-foreground hover:text-primary transition-colors mt-1 inline-block">{siteContent.contact?.email}</a>
-              </div>
-            </div>
+        </div>
+      </section>
 
-            <div className="glass p-6 rounded-2xl flex items-start gap-4">
-              <div className="p-3 bg-accent/10 text-accent rounded-xl">
-                <Github className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-foreground">GitHub</h4>
-                <a href={githubLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors mt-1 inline-block">{githubLink}</a>
-              </div>
-            </div>
+      <section id="contact" className="section-shell border-t border-slate-200/80">
+        <div className="container">
+          <div className="section-intro">
+            <span className="section-kicker">Contact</span>
+            <h2 className="section-title">{siteContent.contact?.title || 'Get in Touch'}</h2>
+            <p className="section-copy">{siteContent.contact?.description}</p>
+          </div>
 
-            <div className="glass p-6 rounded-2xl flex items-start gap-4">
-              <div className="p-3 bg-primary/10 text-primary rounded-xl">
-                <Linkedin className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-foreground">LinkedIn</h4>
-                <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors mt-1 inline-block">Professional Profile</a>
-              </div>
-            </div>
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <ContactForm />
 
-            <div className="glass p-6 rounded-2xl flex items-start gap-4">
-              <div className="p-3 bg-accent/10 text-accent rounded-xl">
-                <TerminalSquare className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-foreground">TryHackMe</h4>
-                <a href={tryHackMeLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors mt-1 inline-block">Hands-on lab profile</a>
-              </div>
+            <div className="grid gap-5">
+              {[
+                { title: 'Email', value: siteContent.contact?.email, href: `mailto:${siteContent.contact?.email}`, icon: Mail },
+                { title: 'GitHub', value: githubLink, href: githubLink, icon: Github },
+                { title: 'LinkedIn', value: linkedinLink === '#' ? 'Professional profile' : linkedinLink, href: linkedinLink, icon: Linkedin },
+                { title: 'TryHackMe', value: 'Hands-on lab profile', href: tryHackMeLink, icon: TerminalSquare },
+              ].map((item) => {
+                const Icon = item.icon
+                return (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    className="panel flex items-start gap-4 transition hover:-translate-y-1"
+                  >
+                    <div className="inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-heading text-xl font-bold text-slate-950">{item.title}</h4>
+                      <p className="mt-1 break-all text-sm leading-7 text-slate-600">{item.value}</p>
+                    </div>
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>

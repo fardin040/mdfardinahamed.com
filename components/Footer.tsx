@@ -6,20 +6,20 @@ export default function Footer() {
   const linkedin = siteContent.contact.socials.find((social) => social?.name?.toLowerCase().includes('linkedin'))?.link
 
   return (
-    <footer className="border-t border-border/50 py-12 mt-16 bg-gradient-to-t from-background to-transparent">
-      <div className="container flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-sm text-muted-foreground">
+    <footer className="mt-20 border-t border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.4),rgba(255,255,255,0.9))] py-12">
+      <div className="container flex flex-col gap-8 text-sm text-slate-600 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-semibold text-foreground">{siteContent.footer.name}</p>
-          <p>{siteContent.footer.tagline}</p>
-          <p className="text-xs opacity-80 mt-1">{siteContent.footer.subTagline}</p>
+          <p className="font-heading text-2xl font-black text-slate-950">{siteContent.footer.name}</p>
+          <p className="mt-2 text-base font-medium text-primary">{siteContent.footer.tagline}</p>
+          <p className="mt-2 max-w-xl text-sm leading-7 text-slate-600">{siteContent.footer.subTagline}</p>
         </div>
-        <div className="flex flex-col md:items-end gap-2">
+        <div className="flex flex-col gap-3 md:items-end">
           <div className="flex flex-wrap gap-4">
-            {github && <a href={github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a>}
-            {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>}
-            <a href={`mailto:${siteContent.contact.email}`} className="hover:text-primary transition-colors">Email</a>
+            {github && <a href={github} target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-700 transition-colors hover:text-primary">GitHub</a>}
+            {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-700 transition-colors hover:text-primary">LinkedIn</a>}
+            <a href={`mailto:${siteContent.contact.email}`} className="font-semibold text-slate-700 transition-colors hover:text-primary">Email</a>
           </div>
-          <p>&copy; {new Date().getFullYear()} {siteContent.footer.name}. All rights reserved.</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">&copy; {new Date().getFullYear()} {siteContent.footer.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>

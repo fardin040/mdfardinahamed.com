@@ -4,146 +4,215 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 212 45% 97%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 217 91% 54%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 214 32% 94%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 214 32% 94%;
+    --muted-foreground: 215 18% 42%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 214 30% 88%;
+    --input: 214 30% 88%;
+    --ring: 217 91% 54%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 222 47% 7%;
+    --background: 222 47% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 9%;
+    --card: 222 47% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 9%;
+    --popover: 222 47% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 213 94% 68%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217 33% 16%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 217 33% 16%;
+    --muted-foreground: 215 20% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 42 95% 62%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-  }
-}
-
-@layer base {
-  /* Base Blue Theme is default */
-
-  [data-theme="emerald"] {
-    --primary: 158 64% 52%;
-    --accent: 142 71% 45%;
-    --ring: 158 64% 52%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 213 94% 68%;
   }
 
-  [data-theme="violet"] {
+  [data-theme='emerald'] {
+    --primary: 160 84% 39%;
+    --accent: 43 96% 56%;
+    --ring: 160 84% 39%;
+  }
+
+  [data-theme='violet'] {
     --primary: 262 83% 58%;
-    --accent: 271 91% 65%;
+    --accent: 31 94% 61%;
     --ring: 262 83% 58%;
   }
 
-  [data-theme="rose"] {
-    --primary: 346 87% 60%;
-    --accent: 338 71% 52%;
-    --ring: 346 87% 60%;
+  [data-theme='rose'] {
+    --primary: 350 89% 60%;
+    --accent: 38 92% 50%;
+    --ring: 350 89% 60%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 transition-colors duration-500;
-    /* Dynamic mesh gradient background */
-    background-image:
-      radial-gradient(at 0% 0%, hsla(var(--background), 1) 0, transparent 50%),
-      radial-gradient(at 50% 0%, hsla(var(--primary), 0.15) 0, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(var(--accent), 0.1) 0, transparent 50%);
-    background-attachment: fixed;
+    @apply font-sans antialiased text-foreground selection:bg-primary/20;
+    background:
+      radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 28%),
+      radial-gradient(circle at top right, rgba(251, 191, 36, 0.14), transparent 24%),
+      linear-gradient(180deg, #f8fbff 0%, #eef4fb 48%, #f8fafc 100%);
+    min-height: 100vh;
   }
 
   .dark body {
-    background-image:
-      radial-gradient(at 0% 0%, hsla(var(--background), 1) 0, transparent 50%),
-      radial-gradient(at 50% 0%, hsla(var(--primary), 0.15) 0, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(var(--accent), 0.1) 0, transparent 50%);
+    background:
+      radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgba(251, 191, 36, 0.12), transparent 24%),
+      linear-gradient(180deg, #08111f 0%, #0b1425 48%, #0f172a 100%);
+  }
+
+  a {
+    @apply transition-colors;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-background/60 backdrop-blur-md border border-white/10 shadow-sm dark:bg-black/40;
+  .container {
+    @apply mx-auto max-w-6xl px-6 md:px-8;
   }
 
-  .container {
-    @apply max-w-5xl mx-auto px-6 md:px-8;
+  .glass {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+  }
+
+  .panel {
+    @apply rounded-[2rem] p-7;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 20px 60px -35px rgba(15, 23, 42, 0.28);
+    backdrop-filter: blur(12px);
+  }
+
+  .section-shell {
+    @apply py-20 md:py-24;
+  }
+
+  .section-intro {
+    @apply mb-12 max-w-3xl;
+  }
+
+  .section-kicker {
+    @apply inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary;
+    border: 1px solid hsl(var(--primary) / 0.15);
+    background: hsl(var(--primary) / 0.1);
+  }
+
+  .section-title {
+    @apply mt-5 font-heading text-4xl font-black leading-tight text-slate-950 md:text-5xl;
+  }
+
+  .section-copy {
+    @apply mt-4 text-lg leading-8 text-slate-600;
+  }
+
+  .hero-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 90%);
+    pointer-events: none;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(65px);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .hero-orb-left {
+    left: -8rem;
+    top: 4rem;
+    height: 18rem;
+    width: 18rem;
+    background: rgba(59, 130, 246, 0.22);
+  }
+
+  .hero-orb-right {
+    right: -5rem;
+    top: 8rem;
+    height: 15rem;
+    width: 15rem;
+    background: rgba(251, 191, 36, 0.18);
   }
 }
 
 .article-content {
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 .article-content h2,
 .article-content h3 {
-  @apply font-heading font-semibold text-foreground;
+  @apply font-heading font-bold text-slate-950;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
 
 .article-content h2 {
-  @apply text-2xl;
+  @apply text-3xl;
 }
 
 .article-content h3 {
-  @apply text-xl;
+  @apply text-2xl;
 }
 
 .article-content p,
 .article-content ul,
 .article-content ol {
-  @apply text-muted-foreground;
+  @apply text-slate-700;
   margin-bottom: 1rem;
 }
 
@@ -161,7 +230,7 @@
 }
 
 .article-content pre {
-  @apply bg-slate-950 text-slate-100 rounded-2xl border border-slate-800 overflow-x-auto;
+  @apply overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950 text-slate-100;
   padding: 1rem;
   margin: 1.5rem 0;
 }
@@ -172,14 +241,13 @@
 
 .article-content p code,
 .article-content li code {
-  @apply bg-secondary text-foreground rounded px-1.5 py-0.5 border border-border/50;
+  @apply rounded bg-slate-100 px-1.5 py-0.5 text-slate-900;
 }
 
 .article-content a {
-  @apply text-primary font-medium;
+  @apply font-semibold text-primary;
 }
 
-/* subtle animations */
 .fade-in {
   animation: fadeIn 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
