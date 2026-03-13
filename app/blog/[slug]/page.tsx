@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
 import { getPost } from '../../../lib/markdown'
+import { isTinaRuntimeEnabled } from '../../../lib/tina-mode'
 import { getBlogPostData } from '../../../lib/tina'
 import PostClient from '../post-client'
 
@@ -17,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({ params }: Props) {
-  if (process.env.NODE_ENV === 'production') {
+  if (!isTinaRuntimeEnabled()) {
     const { meta, html } = await getPost(params.slug)
 
     return (

@@ -36,8 +36,8 @@ Available scripts
 - `dev`: Runs Next.js in development mode.
 - `dev`: Runs TinaCMS local mode with Next.js so `/admin` can edit content.
 - `dev:next`: Runs plain Next.js development mode without Tina.
-- `build`: Builds production assets.
-- `cms:build`: Generates the Tina admin app into `public/admin` for environments with valid Tina credentials.
+- `build`: Runs `tinacms build` first when Tina Cloud credentials are present, then builds Next.js.
+- `cms:build`: Generates the Tina admin app and production Tina client files.
 - `start`: Runs the production server after build.
 - `lint`: (if configured) Runs linting.
 
@@ -66,25 +66,26 @@ SEO & metadata
 - Global metadata is defined in `app/layout.tsx`.
 - Open Graph preview uses `public/og-preview.svg`.
 
-Deployment (Vercel)
+Deployment (Vercel + Tina)
 
 1. Push the repository to GitHub.
 2. Import the repo into Vercel (<https://vercel.com/new>). Vercel auto-detects Next.js App Router projects.
-3. Set environment variables under Project Settings if you use third-party services.
+3. Set environment variables under Project Settings before deploying.
 
 Important environment variables
 
 - `FORMSPREE_ENDPOINT` — (optional) The Formspree endpoint URL (e.g. `https://formspree.io/f/your-id`). When set, contact form submissions will be forwarded to this endpoint from the serverless function. If not set, submissions will be logged in the server logs for testing.
-- `NEXT_PUBLIC_TINA_CLIENT_ID` — Required only if you want to generate a production Tina admin build against Tina Cloud.
-- `TINA_TOKEN` — Required only if you want to generate a production Tina admin build against Tina Cloud.
+- `NEXT_PUBLIC_TINA_CLIENT_ID` — Required for Tina editing on Vercel.
+- `TINA_TOKEN` — Required for Tina content API access during the Vercel build and runtime.
+- `NEXT_PUBLIC_TINA_BRANCH` — Optional if you want to pin the Tina branch explicitly.
 
 1. Deploy — Vercel will run `npm run build` automatically.
 
 CMS notes
 
 1. For local editing, use `npm run dev` and open `/admin`.
-2. For a production Tina admin build, set valid Tina credentials and run `npm run cms:build` before deployment.
-3. Without a generated Tina admin app, `/admin` falls back to an informational placeholder page.
+2. For production Tina editing on Vercel, make sure `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are set.
+3. The production build runs Tina generation automatically when the Tina env vars are present, so `/admin` can use the Tina-backed setup after deployment.
 
 Notes for reviewers / maintainers
 

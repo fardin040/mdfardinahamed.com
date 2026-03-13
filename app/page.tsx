@@ -1,9 +1,10 @@
 import { getHomePageData } from '../lib/tina'
+import { isTinaRuntimeEnabled } from '../lib/tina-mode'
 import { HomeClient } from './home-client'
 import { HomeStatic } from './home-static'
 
 export default async function Page() {
-  if (process.env.NODE_ENV === 'production') {
+  if (!isTinaRuntimeEnabled()) {
     return <HomeStatic />
   }
 

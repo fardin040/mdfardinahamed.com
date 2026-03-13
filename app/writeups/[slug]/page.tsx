@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
 import { getWriteup } from '../../../lib/markdown'
+import { isTinaRuntimeEnabled } from '../../../lib/tina-mode'
 import { getWriteupData } from '../../../lib/tina'
 import WriteupClient from '../writeup-client'
 
@@ -17,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export default async function WriteupPage({ params }: Props) {
-  if (process.env.NODE_ENV === 'production') {
+  if (!isTinaRuntimeEnabled()) {
     const { meta, html } = await getWriteup(params.slug)
 
     return (

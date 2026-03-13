@@ -3,6 +3,7 @@ import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { getHomePageData } from '../lib/tina'
+import { isTinaRuntimeEnabled } from '../lib/tina-mode'
 
 export const metadata = {
   metadataBase: new URL('https://mdfardinahamed.com'),
@@ -56,9 +57,9 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const home =
-    process.env.NODE_ENV === 'production'
-      ? null
-      : await getHomePageData()
+    isTinaRuntimeEnabled()
+      ? await getHomePageData()
+      : null
 
   return (
     <html lang="en" className="scroll-smooth">
