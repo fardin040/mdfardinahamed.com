@@ -187,14 +187,9 @@ export function HomeClient(props: {
             </div>
 
             <div className="fade-up">
-              <div className="relative rounded-[2rem] border border-white/80 bg-white/75 p-5 shadow-[0_30px_80px_-35px_rgba(15,23,42,0.35)] backdrop-blur-xl">
-                <div className="absolute -right-5 -top-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 shadow-lg">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-700">Current Aim</p>
-                  <p className="mt-1 text-sm font-semibold text-slate-900">Research-ready cybersecurity portfolio</p>
-                </div>
-
+              <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 shadow-[0_30px_80px_-35px_rgba(15,23,42,0.35)] backdrop-blur-xl">
                 {siteContent.hero?.profilePicture && (
-                  <div className="relative aspect-[4/4.3] overflow-hidden rounded-[1.75rem] bg-slate-200">
+                  <div className="relative aspect-[4/4.2] overflow-hidden bg-slate-200">
                     <Image
                       src={siteContent.hero.profilePicture}
                       alt={siteContent.footer?.name || 'Profile Picture'}
@@ -202,26 +197,41 @@ export function HomeClient(props: {
                       className="object-cover"
                       priority
                     />
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/45 to-transparent" />
+                    <div className="absolute bottom-5 left-5 rounded-2xl border border-white/15 bg-slate-950/70 px-4 py-3 text-white backdrop-blur">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">Current Aim</p>
+                      <p className="mt-1 text-sm font-semibold">Research-ready cybersecurity portfolio</p>
+                    </div>
                   </div>
                 )}
 
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-slate-950 p-5 text-white">
+                <div className="p-6">
+                  <div className="rounded-[1.5rem] bg-slate-950 p-5 text-white">
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Primary Lens</p>
-                    <p className="mt-3 text-xl font-bold">Secure systems through observable evidence.</p>
+                    <p className="mt-3 text-xl font-bold leading-snug">Secure systems through observable evidence.</p>
                   </div>
-                  <div className="rounded-2xl bg-gradient-to-br from-primary/10 via-white to-amber-100 p-5">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Preferred Workflow</p>
-                    <p className="mt-3 text-lg font-bold text-slate-900">Capture, test, document, refine.</p>
-                  </div>
-                </div>
 
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {['Packet Tracing', 'Forensics', 'Protocol Research', 'Embedded Projects'].map((tag) => (
-                    <span key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700">
-                      {tag}
-                    </span>
-                  ))}
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                      <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Preferred Workflow</p>
+                      <p className="mt-3 text-lg font-bold text-slate-900">Capture, test, document, refine.</p>
+                    </div>
+                    <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50 p-5">
+                      <p className="text-xs uppercase tracking-[0.2em] text-amber-700">Academic Direction</p>
+                      <p className="mt-3 text-lg font-bold text-slate-900">Graduate-level cybersecurity research.</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Focus Areas</p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {['Packet Tracing', 'Forensics', 'Protocol Research', 'Embedded Projects'].map((tag) => (
+                        <span key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
