@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { useTina, tinaField } from 'tinacms/dist/react'
 import ThemeToggle from './ThemeToggle'
 import ThemeColorPicker from './ThemeColorPicker'
-import { siteContent } from '../data/content'
+import { siteContent as staticSiteContent, type SiteContent } from '../data/content'
+import type { HomeQuery, HomeQueryVariables } from '../tina/__generated__/types'
 
 const navLinks = [
   { href: '/#about', label: 'About' },
@@ -15,7 +17,24 @@ const navLinks = [
 ]
 
 export default function Nav() {
+  return <NavView siteContent={staticSiteContent} />
+}
+
+export function TinaNav(props: {
+  query: string
+  data: HomeQuery
+  variables: HomeQueryVariables
+}) {
+  const { data } = useTina(props)
+  return <NavView siteContent={data.home} tinaDocument={data.home} />
+}
+
+function NavView(props: {
+  siteContent: SiteContent | HomeQuery['home']
+  tinaDocument?: HomeQuery['home']
+}) {
   const [isOpen, setIsOpen] = useState(false)
+  const { siteContent, tinaDocument } = props
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -31,7 +50,9 @@ export default function Nav() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 text-lg font-heading font-black tracking-tight text-slate-950">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-bold text-white">FA</span>
-            <span className="hidden sm:inline">{siteContent.footer.name}</span>
+            <span className="hidden sm:inline" data-tina-field={tinaDocument ? tinaField(tinaDocument.footer, 'name') : undefined}>
+              {siteContent.footer?.name}
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">

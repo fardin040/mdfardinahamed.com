@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
+import { tinaField, useTina } from 'tinacms/dist/react'
 import {
   ArrowUpRight,
   Cpu,
@@ -19,7 +20,8 @@ import ProjectCard from '../components/ProjectCard'
 import ContactForm from '../components/ContactForm'
 import { projects } from '../data/projects'
 import { writeupPreviews } from '../data/writeups'
-import { siteContent as staticSiteContent } from '../data/content'
+import { siteContent as staticSiteContent, type SiteContent } from '../data/content'
+import type { HomeQuery, HomeQueryVariables } from '../tina/__generated__/types'
 
 const skillGroups = [
   {
@@ -102,7 +104,24 @@ function getSocialLink(
 export function HomeClient(props: {
   siteContent?: typeof staticSiteContent
 }) {
+  return <HomeView siteContent={props.siteContent} />
+}
+
+export function TinaHomeClient(props: {
+  query: string
+  data: HomeQuery
+  variables: HomeQueryVariables
+}) {
+  const { data } = useTina(props)
+  return <HomeView siteContent={data.home} tinaDocument={data.home} />
+}
+
+function HomeView(props: {
+  siteContent?: SiteContent | HomeQuery['home']
+  tinaDocument?: HomeQuery['home']
+}) {
   const siteContent = props.siteContent
+  const tinaDocument = props.tinaDocument
 
   if (!siteContent) return null
 
@@ -132,23 +151,26 @@ export function HomeClient(props: {
             <div className="fade-in">
               <div className="inline-flex items-center rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur">
                 <span className="mr-3 h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                {siteContent.hero?.badge}
+                <span data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'badge') : undefined}>{siteContent.hero?.badge}</span>
               </div>
 
               <h1 className="mt-8 max-w-4xl font-heading text-5xl font-black leading-[1.02] text-slate-950 md:text-7xl lg:text-[5.25rem]">
-                <span className="block text-slate-950">{siteContent.hero?.headlinePrefix}</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-sky-500 to-amber-500">
+                <span className="block text-slate-950" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'headlinePrefix') : undefined}>{siteContent.hero?.headlinePrefix}</span>
+                <span
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-sky-500 to-amber-500"
+                  data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'headlineSuffix') : undefined}
+                >
                   {siteContent.hero?.headlineSuffix}
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-3xl text-xl font-medium leading-relaxed text-slate-700 md:text-2xl">
+              <p className="mt-6 max-w-3xl text-xl font-medium leading-relaxed text-slate-700 md:text-2xl" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'subheadlineLine1') : undefined}>
                 {siteContent.hero?.subheadlineLine1}
                 <span className="mx-3 hidden text-primary/40 md:inline">/</span>
                 {siteContent.hero?.subheadlineLine2}
               </p>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl">
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'description') : undefined}>
                 {siteContent.hero?.description}
               </p>
 
@@ -243,7 +265,7 @@ export function HomeClient(props: {
         <div className="container">
           <div className="section-intro">
             <span className="section-kicker">About</span>
-            <h2 className="section-title">{siteContent.about?.title || 'Academic Background & Research Interests'}</h2>
+            <h2 className="section-title" data-tina-field={tinaDocument ? tinaField(tinaDocument.about, 'title') : undefined}>{siteContent.about?.title || 'Academic Background & Research Interests'}</h2>
             <p className="section-copy">
               A focused portfolio around networks, protocol behavior, defensive engineering, and research communication.
             </p>
@@ -252,7 +274,7 @@ export function HomeClient(props: {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="panel space-y-6 text-lg leading-8 text-slate-700">
               {siteContent.about?.paragraphs?.map((paragraph, index) => (
-                <p key={index}>{renderText(paragraph || '')}</p>
+                <p key={index} data-tina-field={tinaDocument ? tinaField(tinaDocument.about, 'paragraphs', index) : undefined}>{renderText(paragraph || '')}</p>
               ))}
               <p>
                 I work best when learning produces artifacts: packet captures, parsers, lab notes, tool prototypes, and
@@ -459,8 +481,8 @@ export function HomeClient(props: {
         <div className="container">
           <div className="section-intro">
             <span className="section-kicker">Contact</span>
-            <h2 className="section-title">{siteContent.contact?.title || 'Get in Touch'}</h2>
-            <p className="section-copy">{siteContent.contact?.description}</p>
+            <h2 className="section-title" data-tina-field={tinaDocument ? tinaField(tinaDocument.contact, 'title') : undefined}>{siteContent.contact?.title || 'Get in Touch'}</h2>
+            <p className="section-copy" data-tina-field={tinaDocument ? tinaField(tinaDocument.contact, 'description') : undefined}>{siteContent.contact?.description}</p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">

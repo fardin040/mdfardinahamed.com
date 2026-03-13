@@ -1,5 +1,14 @@
 import { defineConfig } from "tinacms";
 
+const markdownFields = [
+  { type: "string", name: "title", label: "Title", required: true },
+  { type: "datetime", name: "date", label: "Publish Date", required: true },
+  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+  { type: "string", name: "category", label: "Category" },
+  { type: "string", name: "tags", label: "Tags", list: true },
+  { type: "rich-text", name: "body", label: "Body", isBody: true },
+] as const;
+
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
   (process.env.VERCEL_ENV === 'production'
@@ -163,6 +172,26 @@ export default defineConfig({
             ]
           }
         ],
+      },
+      {
+        name: "blog",
+        label: "Blog Posts",
+        path: "content/blog",
+        format: "md",
+        ui: {
+          router: ({ document }) => `/blog/${document._sys.filename}`,
+        },
+        fields: [...markdownFields],
+      },
+      {
+        name: "writeups",
+        label: "Writeups",
+        path: "content/writeups",
+        format: "md",
+        ui: {
+          router: ({ document }) => `/writeups/${document._sys.filename}`,
+        },
+        fields: [...markdownFields],
       },
     ],
   },

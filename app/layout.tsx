@@ -2,6 +2,9 @@ import './globals.css'
 import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import { TinaNav } from '../components/Nav'
+import { TinaFooter } from '../components/Footer'
+import { getHomeDocument } from '../lib/tina-content'
 
 export const metadata = {
   metadataBase: new URL('https://mdfardinahamed.com'),
@@ -53,14 +56,24 @@ export const metadata = {
   }
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const homeDocument = await getHomeDocument()
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className="font-sans">
         <div className="min-h-screen flex flex-col pt-16">
-          <Nav />
+          {homeDocument ? (
+            <TinaNav query={homeDocument.query} data={homeDocument.data} variables={homeDocument.variables} />
+          ) : (
+            <Nav />
+          )}
           <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">{children}</main>
-          <Footer />
+          {homeDocument ? (
+            <TinaFooter query={homeDocument.query} data={homeDocument.data} variables={homeDocument.variables} />
+          ) : (
+            <Footer />
+          )}
         </div>
       </body>
     </html>
