@@ -5,17 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
 import { tinaField, useTina } from 'tinacms/dist/react'
-import {
-  ArrowUpRight,
-  Cpu,
-  Github,
-  GraduationCap,
-  Linkedin,
-  Mail,
-  Radar,
-  Shield,
-  TerminalSquare,
-} from 'lucide-react'
+import { ArrowUpRight, Github, Linkedin, Mail, Shield, TerminalSquare } from 'lucide-react'
 import ProjectCard from '../components/ProjectCard'
 import ContactForm from '../components/ContactForm'
 import { projects } from '../data/projects'
@@ -44,29 +34,7 @@ const skillGroups = [
   },
 ]
 
-const highlightStats = [
-  { label: 'Core Direction', value: 'Network Security' },
-  { label: 'Current Track', value: 'MSc Preparation' },
-  { label: 'Working Style', value: 'Labs + Writeups' },
-]
-
-const focusCards = [
-  {
-    title: 'Protocol Analysis',
-    description: 'Studying how systems reveal state through packet traces, handshake logic, and transport-layer behavior.',
-    icon: Radar,
-  },
-  {
-    title: 'Security Engineering',
-    description: 'Building practical tools that make host telemetry, scanning mechanics, and event signals easier to inspect.',
-    icon: Cpu,
-  },
-  {
-    title: 'Graduate Research',
-    description: 'Writing with clarity, preserving evidence, and turning experiments into publication-ready technical narratives.',
-    icon: GraduationCap,
-  },
-]
+const highlightStats = ['Network Security', 'MSc Preparation', 'Labs and Writeups']
 
 function renderText(text: string) {
   if (!text) return text
@@ -143,41 +111,36 @@ function HomeView(props: {
     <>
       <Script id="schema-person" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="hero-shell relative overflow-hidden px-4 pb-20 pt-28 md:px-0 md:pt-36">
-        <div className="hero-orb hero-orb-left" />
-        <div className="hero-orb hero-orb-right" />
-        <div className="container relative">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="px-4 pb-16 pt-16 md:px-0 md:pt-20">
+        <div className="container">
+          <div className="grid items-start gap-10 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="fade-in">
-              <div className="inline-flex items-center rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur">
-                <span className="mr-3 h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-600">
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
                 <span data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'badge') : undefined}>{siteContent.hero?.badge}</span>
               </div>
 
-              <h1 className="mt-8 max-w-4xl font-heading text-5xl font-black leading-[1.02] text-slate-950 md:text-7xl lg:text-[5.25rem]">
-                <span className="block text-slate-950" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'headlinePrefix') : undefined}>{siteContent.hero?.headlinePrefix}</span>
-                <span
-                  className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-sky-500 to-amber-500"
-                  data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'headlineSuffix') : undefined}
-                >
+              <h1 className="mt-6 max-w-4xl font-heading text-4xl font-bold leading-tight text-slate-950 md:text-6xl">
+                <span className="block" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'headlinePrefix') : undefined}>{siteContent.hero?.headlinePrefix}</span>
+                <span className="block" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'headlineSuffix') : undefined}>
                   {siteContent.hero?.headlineSuffix}
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-3xl text-xl font-medium leading-relaxed text-slate-700 md:text-2xl" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'subheadlineLine1') : undefined}>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'subheadlineLine1') : undefined}>
                 {siteContent.hero?.subheadlineLine1}
-                <span className="mx-3 hidden text-primary/40 md:inline">/</span>
+                <span className="mx-3 hidden text-slate-300 md:inline">/</span>
                 {siteContent.hero?.subheadlineLine2}
               </p>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'description') : undefined}>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600" data-tina-field={tinaDocument ? tinaField(tinaDocument.hero, 'description') : undefined}>
                 {siteContent.hero?.description}
               </p>
 
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={siteContent.hero?.primaryCta?.link || '#projects'}
-                  className="inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/20 transition hover:-translate-y-1 hover:bg-slate-900"
+                  className="inline-flex items-center gap-2 rounded-lg bg-slate-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
                 >
                   {siteContent.hero?.primaryCta?.text || 'View Projects'}
                   <ArrowUpRight className="h-4 w-4" />
@@ -186,32 +149,29 @@ function HomeView(props: {
                   href={siteContent.hero?.secondaryCta?.link || '/resume.pdf'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white/90 px-7 py-4 text-base font-semibold text-slate-800 transition hover:-translate-y-1 hover:border-primary/40 hover:text-primary"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
                 >
                   {siteContent.hero?.secondaryCta?.text || 'Download Resume'}
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-2xl border border-transparent bg-primary/10 px-7 py-4 text-base font-semibold text-primary transition hover:-translate-y-1 hover:bg-primary/15"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
                 >
                   Contact
                 </a>
               </div>
 
-              <div className="mt-12 grid gap-4 sm:grid-cols-3">
+              <div className="mt-8 flex flex-wrap gap-2">
                 {highlightStats.map((item) => (
-                  <div key={item.label} className="rounded-3xl border border-white/70 bg-white/70 p-5 shadow-lg shadow-slate-200/40 backdrop-blur">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">{item.label}</p>
-                    <p className="mt-3 text-lg font-bold text-slate-900">{item.value}</p>
-                  </div>
+                  <span key={item} className="rounded-md bg-slate-100 px-3 py-2 text-sm text-slate-700">{item}</span>
                 ))}
               </div>
             </div>
 
             <div className="fade-up">
-              <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 shadow-[0_30px_80px_-35px_rgba(15,23,42,0.35)] backdrop-blur-xl">
+              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
                 {siteContent.hero?.profilePicture && (
-                  <div className="relative aspect-[4/4.2] overflow-hidden bg-slate-200">
+                  <div className="relative aspect-[4/4.2] overflow-hidden bg-slate-100">
                     <Image
                       src={siteContent.hero.profilePicture}
                       alt={siteContent.footer?.name || 'Profile Picture'}
@@ -219,40 +179,17 @@ function HomeView(props: {
                       className="object-cover"
                       priority
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/45 to-transparent" />
-                    <div className="absolute bottom-5 left-5 rounded-2xl border border-white/15 bg-slate-950/70 px-4 py-3 text-white backdrop-blur">
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">Current Aim</p>
-                      <p className="mt-1 text-sm font-semibold">Research-ready cybersecurity portfolio</p>
-                    </div>
                   </div>
                 )}
 
-                <div className="p-6">
-                  <div className="rounded-[1.5rem] bg-slate-950 p-5 text-white">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Primary Lens</p>
-                    <p className="mt-3 text-xl font-bold leading-snug">Secure systems through observable evidence.</p>
+                <div className="space-y-4 border-t border-slate-200 p-6">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Current focus</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-700">Protocol analysis, network forensics, and graduate-level cybersecurity preparation.</p>
                   </div>
-
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
-                      <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Preferred Workflow</p>
-                      <p className="mt-3 text-lg font-bold text-slate-900">Capture, test, document, refine.</p>
-                    </div>
-                    <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50 p-5">
-                      <p className="text-xs uppercase tracking-[0.2em] text-amber-700">Academic Direction</p>
-                      <p className="mt-3 text-lg font-bold text-slate-900">Graduate-level cybersecurity research.</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-white p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Focus Areas</p>
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {['Packet Tracing', 'Forensics', 'Protocol Research', 'Embedded Projects'].map((tag) => (
-                        <span key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Working style</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-700">Hands-on labs, careful documentation, and repeatable technical writeups.</p>
                   </div>
                 </div>
               </div>
@@ -271,8 +208,8 @@ function HomeView(props: {
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="panel space-y-6 text-lg leading-8 text-slate-700">
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+            <div className="space-y-5 text-base leading-8 text-slate-700">
               {siteContent.about?.paragraphs?.map((paragraph, index) => (
                 <p key={index} data-tina-field={tinaDocument ? tinaField(tinaDocument.about, 'paragraphs', index) : undefined}>{renderText(paragraph || '')}</p>
               ))}
@@ -282,19 +219,15 @@ function HomeView(props: {
               </p>
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
-              {focusCards.map((item) => {
-                const Icon = item.icon
-                return (
-                  <article key={item.title} className="panel">
-                    <div className="inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mt-5 font-heading text-xl font-bold text-slate-950">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
-                  </article>
-                )
-              })}
+            <div className="panel">
+              <h3 className="font-heading text-lg font-bold text-slate-950">Focus areas</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {['Protocol Analysis', 'Security Engineering', 'Digital Forensics', 'Research Writing', 'Embedded Projects'].map((item) => (
+                  <span key={item} className="rounded-md bg-slate-100 px-3 py-2 text-sm text-slate-700">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -310,12 +243,11 @@ function HomeView(props: {
           <div className="grid gap-6 lg:grid-cols-3">
             {skillGroups.map((group) => (
               <div key={group.title} className="panel">
-                <div className={`h-1.5 w-20 rounded-full ${group.color === 'primary' ? 'bg-primary' : 'bg-amber-500'}`} />
-                <h3 className="mt-6 font-heading text-2xl font-bold text-slate-950">{group.title}</h3>
+                <h3 className="font-heading text-xl font-bold text-slate-950">{group.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{group.description}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {group.skills.map((skill) => (
-                    <span key={skill} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+                    <span key={skill} className="rounded-md bg-slate-100 px-3 py-2 text-sm text-slate-700">
                       {skill}
                     </span>
                   ))}
@@ -337,34 +269,26 @@ function HomeView(props: {
 
             <div className="grid gap-6 md:grid-cols-2">
               {(siteContent as any).certificates?.list?.map((cert: any, index: number) => (
-                <div
-                  key={index}
-                  className="panel relative overflow-hidden border-slate-200/80 bg-gradient-to-br from-white via-white to-primary/5"
-                >
-                  <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-full bg-amber-100/70" />
-                  <div className="relative">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
-                        <Shield className="h-6 w-6" />
-                      </div>
-                      <span className="rounded-full bg-slate-950 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
-                        {cert?.date}
-                      </span>
+                <div key={index} className="panel">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="inline-flex rounded-lg bg-slate-100 p-2 text-slate-700">
+                      <Shield className="h-5 w-5" />
                     </div>
-                    <h3 className="mt-6 font-heading text-2xl font-bold text-slate-950">{cert?.title}</h3>
-                    <p className="mt-2 text-base font-medium text-slate-600">{cert?.issuer}</p>
+                    <span className="text-xs text-slate-500">{cert?.date}</span>
+                  </div>
+                  <h3 className="mt-5 font-heading text-xl font-bold text-slate-950">{cert?.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{cert?.issuer}</p>
                     {cert?.link && cert.link !== '#' && (
                       <a
                         href={cert.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                        className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-950"
                       >
                         Verify credential
                         <ArrowUpRight className="h-4 w-4" />
                       </a>
                     )}
-                  </div>
                 </div>
               ))}
             </div>
@@ -376,7 +300,7 @@ function HomeView(props: {
         <div className="container">
           <div className="section-intro">
             <span className="section-kicker">Projects</span>
-            <h2 className="section-title">Practical security and systems projects with clear technical intent</h2>
+            <h2 className="section-title">Projects</h2>
             <p className="section-copy">
               Each project is designed to make protocol mechanics, host behavior, or attack surface analysis easier to inspect.
             </p>
@@ -405,31 +329,23 @@ function HomeView(props: {
         <div className="container">
           <div className="section-intro">
             <span className="section-kicker">Writeups</span>
-            <h2 className="section-title">Research notes that show how I think, test, and explain</h2>
-          </div>
-
-          <div className="mb-8 flex flex-wrap gap-3">
-            {['Networking', 'Lab Notes', 'Linux', 'Cryptography', 'Incident Thinking'].map((category) => (
-              <span key={category} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
-                {category}
-              </span>
-            ))}
+            <h2 className="section-title">Selected writeups</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {writeupPreviews.map((writeup) => (
               <article key={writeup.slug} className="panel flex h-full flex-col">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{writeup.category}</p>
-                <h3 className="mt-4 font-heading text-2xl font-bold text-slate-950">{writeup.title}</h3>
+                <p className="text-xs uppercase tracking-[0.16em] text-slate-500">{writeup.category}</p>
+                <h3 className="mt-4 font-heading text-xl font-bold text-slate-950">{writeup.title}</h3>
                 <p className="mt-3 flex-grow text-sm leading-7 text-slate-600">{writeup.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {writeup.tags.map((tag) => (
-                    <span key={tag} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">
+                    <span key={tag} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-700">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <Link href={`/writeups/${writeup.slug}`} className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">
+                <Link href={`/writeups/${writeup.slug}`} className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-slate-950">
                   Read writeup
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
@@ -439,7 +355,7 @@ function HomeView(props: {
 
           <Link
             href="/writeups"
-            className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-7 py-4 font-semibold text-white transition hover:-translate-y-1"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
           >
             Browse all writeups
             <ArrowUpRight className="h-4 w-4" />
@@ -449,26 +365,26 @@ function HomeView(props: {
 
       <section id="blog" className="section-shell border-t border-slate-200/80">
         <div className="container">
-          <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-primary p-10 text-center text-white shadow-[0_30px_80px_-35px_rgba(37,99,235,0.5)] md:p-14">
-            <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-100">
+          <div className="panel">
+            <span className="section-kicker">
               Blog
             </span>
-            <h2 className="mx-auto mt-6 max-w-3xl font-heading text-4xl font-black leading-tight md:text-5xl">
-              A public research log for packet analysis, scanning theory, labs, and security learning milestones
+            <h2 className="mt-3 max-w-3xl font-heading text-3xl font-bold leading-tight text-slate-950 md:text-4xl">
+              Ongoing notes from study, labs, and experiments
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-200">
-              I use the blog to turn learning into publishable notes, with emphasis on clarity, reproducibility, and technical depth.
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+              The blog is where I keep short research notes, learning milestones, and walkthroughs from hands-on security work.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-6 flex flex-wrap gap-2">
               {['Packet Analysis', 'Network Security', 'Cryptography', 'TryHackMe', 'Cybersecurity Labs'].map((tag) => (
-                <span key={tag} className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90">
+                <span key={tag} className="rounded-md bg-slate-100 px-3 py-2 text-sm text-slate-700">
                   {tag}
                 </span>
               ))}
             </div>
             <Link
               href="/blog"
-              className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-4 font-semibold text-slate-950 transition hover:-translate-y-1"
+              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-slate-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
             >
               Explore the blog
               <ArrowUpRight className="h-4 w-4" />
@@ -502,13 +418,13 @@ function HomeView(props: {
                     href={item.href}
                     target={item.href.startsWith('mailto:') ? undefined : '_blank'}
                     rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                    className="panel flex items-start gap-4 transition hover:-translate-y-1"
+                    className="panel flex items-start gap-4"
                   >
-                    <div className="inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
-                      <Icon className="h-6 w-6" />
+                    <div className="inline-flex rounded-lg bg-slate-100 p-3 text-slate-700">
+                      <Icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-heading text-xl font-bold text-slate-950">{item.title}</h4>
+                      <h4 className="font-heading text-lg font-bold text-slate-950">{item.title}</h4>
                       <p className="mt-1 break-all text-sm leading-7 text-slate-600">{item.value}</p>
                     </div>
                   </a>

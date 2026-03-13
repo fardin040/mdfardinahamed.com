@@ -36,18 +36,10 @@ function BlogListView(props: { posts: Post[]; connection?: BlogConnectionQuery['
       <div className="container">
         <div className="section-intro">
           <span className="section-kicker">Research Log</span>
-          <h1 className="section-title">Blog and learning notes built from labs, packet traces, and security study</h1>
+          <h1 className="section-title">Blog</h1>
           <p className="section-copy">
-            A public journal of network analysis, cybersecurity learning progress, protocol reasoning, and hands-on experiments.
+            Notes from labs, packet analysis, and ongoing cybersecurity study.
           </p>
-        </div>
-
-        <div className="mb-10 flex flex-wrap gap-3">
-          {['Packet Analysis', 'Network Security', 'Cryptography', 'TryHackMe Writeups', 'Cybersecurity Labs'].map((tag) => (
-            <span key={tag} className="rounded-full border border-slate-200 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
-              {tag}
-            </span>
-          ))}
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -57,21 +49,21 @@ function BlogListView(props: { posts: Post[]; connection?: BlogConnectionQuery['
               className="panel flex h-full flex-col"
               data-tina-field={connection ? tinaField(connection.edges?.[index]?.node) : undefined}
             >
-              <div className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-slate-500">
                 <span>{post.category || 'Cybersecurity'}</span>
                 <span className="h-1 w-1 rounded-full bg-slate-400" />
                 <span>{post.date}</span>
               </div>
-              <h2 className="font-heading text-3xl font-bold text-slate-950">{post.title}</h2>
+              <h2 className="font-heading text-2xl font-bold text-slate-950">{post.title}</h2>
               <p className="mt-4 flex-grow text-sm leading-7 text-slate-600">{post.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {(post.tags || []).map((tag) => (
-                  <span key={tag} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">
+                  <span key={tag} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-700">
                     {tag}
                   </span>
                 ))}
               </div>
-              <Link href={`/blog/${post.slug}`} className="mt-7 inline-flex items-center gap-2 font-semibold text-primary">
+              <Link href={`/blog/${post.slug}`} className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-slate-950">
                 Read article
                 <ArrowUpRight className="h-4 w-4" />
               </Link>

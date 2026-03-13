@@ -36,9 +36,9 @@ function WriteupListView(props: { writeups: Entry[]; connection?: WriteupsConnec
       <div className="container">
         <div className="section-intro">
           <span className="section-kicker">Writeups</span>
-          <h1 className="section-title">Technical articles and security writeups grounded in practical analysis</h1>
+          <h1 className="section-title">Writeups</h1>
           <p className="section-copy">
-            Focused notes on networking, Linux systems, cryptographic ideas, incident thinking, and structured lab experimentation.
+            Technical notes on networking, systems, and security concepts.
           </p>
         </div>
 
@@ -49,21 +49,21 @@ function WriteupListView(props: { writeups: Entry[]; connection?: WriteupsConnec
               className="panel flex h-full flex-col"
               data-tina-field={connection ? tinaField(connection.edges?.[index]?.node) : undefined}
             >
-              <div className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-slate-500">
                 <span>{entry.category || 'Writeup'}</span>
                 <span className="h-1 w-1 rounded-full bg-slate-400" />
                 <span>{entry.date}</span>
               </div>
-              <h2 className="font-heading text-3xl font-bold text-slate-950">{entry.title}</h2>
+              <h2 className="font-heading text-2xl font-bold text-slate-950">{entry.title}</h2>
               <p className="mt-4 flex-grow text-sm leading-7 text-slate-600">{entry.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {entry.tags?.map((tag) => (
-                  <span key={tag} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">
+                  <span key={tag} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-700">
                     {tag}
                   </span>
                 ))}
               </div>
-              <Link href={`/writeups/${entry.slug}`} className="mt-7 inline-flex items-center gap-2 font-semibold text-primary">
+              <Link href={`/writeups/${entry.slug}`} className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-slate-950">
                 Read writeup
                 <ArrowUpRight className="h-4 w-4" />
               </Link>

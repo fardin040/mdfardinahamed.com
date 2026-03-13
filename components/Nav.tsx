@@ -45,26 +45,26 @@ function NavView(props: {
   }, [isOpen])
 
   return (
-    <div className="pointer-events-none fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pb-2 pt-4">
-      <header className="pointer-events-auto w-full max-w-5xl rounded-full border border-white/70 bg-white/75 px-4 py-3 shadow-[0_18px_50px_-25px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-all sm:px-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 text-lg font-heading font-black tracking-tight text-slate-950">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-bold text-white">FA</span>
-            <span className="hidden sm:inline" data-tina-field={tinaDocument ? tinaField(tinaDocument.footer, 'name') : undefined}>
+    <div className="border-b border-slate-200 bg-white">
+      <header className="container">
+        <div className="flex items-center justify-between py-4">
+          <Link href="/" className="flex items-center gap-3 text-base font-heading font-bold tracking-tight text-slate-950">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-950 text-xs font-bold text-white">FA</span>
+            <span data-tina-field={tinaDocument ? tinaField(tinaDocument.footer, 'name') : undefined}>
               {siteContent.footer?.name}
             </span>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
             {navLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-600 transition-colors hover:text-primary">
+              <Link key={item.href} href={item.href} className="text-sm text-slate-600 transition-colors hover:text-slate-950">
                 {item.label}
               </Link>
             ))}
-            <Link href="/resume.pdf" target="_blank" className="rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary">
+            <Link href="/resume.pdf" target="_blank" className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950">
               Resume
             </Link>
-            <div className="mx-2 h-5 w-px bg-slate-200"></div>
+            <div className="mx-1 h-5 w-px bg-slate-200"></div>
             <ThemeColorPicker />
             <ThemeToggle />
           </nav>
@@ -76,7 +76,7 @@ function NavView(props: {
               type="button"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setIsOpen((open) => !open)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 shadow-sm transition hover:border-primary/30 hover:text-primary"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-900 transition hover:border-slate-300"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -84,14 +84,14 @@ function NavView(props: {
         </div>
 
         {isOpen && (
-          <div className="mt-4 border-t border-slate-200 pt-4 md:hidden">
-            <div className="grid gap-3">
+          <div className="border-t border-slate-200 py-4 md:hidden">
+            <div className="grid gap-2">
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 transition hover:border-primary/30 hover:text-primary"
+                  className="rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
                 >
                   {item.label}
                 </Link>
@@ -100,7 +100,7 @@ function NavView(props: {
                 href="/resume.pdf"
                 target="_blank"
                 onClick={() => setIsOpen(false)}
-                className="rounded-2xl bg-slate-950 px-4 py-3 text-center text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-primary"
+                className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
               >
                 Resume
               </Link>
