@@ -1,4 +1,4 @@
-// File: /home/gray-eye/Desktop/mdfardinahamed.com/app/writeups/page.tsx
+// File: /home/runner/work/mdfardinahamed.com/mdfardinahamed.com/app/writeups/page.tsx
 import * as entry from '../../../../app/writeups/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
