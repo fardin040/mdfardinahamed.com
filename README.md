@@ -84,7 +84,7 @@ CMS notes
 
 1. For local editing, use `npm run dev` and open `/admin`.
 2. For production Tina editing on Vercel, make sure `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are set.
-3. The production build tries Tina generation automatically when the Tina env vars are present. If Tina Cloud has not indexed the latest schema yet, the site still deploys and `/admin` falls back to the placeholder page until indexing catches up.
+3. The production build tries Tina generation automatically when the Tina env vars are present. If Tina Cloud has not indexed the latest schema yet, the site still deploys, disables Tina runtime bindings for that build, and `/admin` falls back to the placeholder page until indexing catches up.
 
 Notes for reviewers / maintainers
 
