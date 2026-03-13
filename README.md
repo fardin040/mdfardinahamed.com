@@ -35,7 +35,7 @@ Available scripts
 
 - `dev`: Runs TinaCMS local mode with Next.js so `/admin` can edit content.
 - `dev:next`: Runs plain Next.js development mode without Tina.
-- `build`: Runs `tinacms build` first when Tina Cloud credentials are present, then builds Next.js.
+- `build`: Tries `tinacms build` first when Tina Cloud credentials are present, then always builds Next.js. If Tina Cloud schema indexing is behind, the site still deploys and `/admin` falls back until Tina catches up.
 - `cms:build`: Generates the Tina admin app and production Tina client files.
 - `start`: Runs the production server after build.
 - `lint`: (if configured) Runs linting.
@@ -84,7 +84,7 @@ CMS notes
 
 1. For local editing, use `npm run dev` and open `/admin`.
 2. For production Tina editing on Vercel, make sure `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are set.
-3. The production build runs Tina generation automatically when the Tina env vars are present, so `/admin` can use the Tina-backed setup after deployment.
+3. The production build tries Tina generation automatically when the Tina env vars are present. If Tina Cloud has not indexed the latest schema yet, the site still deploys and `/admin` falls back to the placeholder page until indexing catches up.
 
 Notes for reviewers / maintainers
 
