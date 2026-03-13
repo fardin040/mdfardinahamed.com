@@ -45,11 +45,11 @@ function NavView(props: {
   }, [isOpen])
 
   return (
-    <div className="border-b border-slate-200 bg-white">
+    <div className="pointer-events-none fixed left-0 right-0 top-0 z-50 px-4 pt-4">
       <header className="container">
-        <div className="flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-3 text-base font-heading font-bold tracking-tight text-slate-950">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-950 text-xs font-bold text-white">FA</span>
+        <div className="pointer-events-auto flex items-center justify-between rounded-full border border-cyan-400/15 bg-slate-950/55 px-5 py-3 shadow-[0_18px_50px_-25px_rgba(2,6,23,0.9)] backdrop-blur-xl">
+          <Link href="/" className="flex items-center gap-3 text-base font-heading font-bold tracking-tight text-white">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-xs font-bold text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.45)]">FA</span>
             <span data-tina-field={tinaDocument ? tinaField(tinaDocument.footer, 'name') : undefined}>
               {siteContent.footer?.name}
             </span>
@@ -57,14 +57,14 @@ function NavView(props: {
 
           <nav className="hidden items-center gap-6 md:flex">
             {navLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="text-sm text-slate-600 transition-colors hover:text-slate-950">
+              <Link key={item.href} href={item.href} className="text-sm text-slate-300 transition-colors hover:text-cyan-200">
                 {item.label}
               </Link>
             ))}
-            <Link href="/resume.pdf" target="_blank" className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950">
+            <Link href="/resume.pdf" target="_blank" className="tech-button-muted px-4 py-2.5">
               Resume
             </Link>
-            <div className="mx-1 h-5 w-px bg-slate-200"></div>
+            <div className="mx-1 h-5 w-px bg-slate-700"></div>
             <ThemeColorPicker />
             <ThemeToggle />
           </nav>
@@ -76,7 +76,7 @@ function NavView(props: {
               type="button"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setIsOpen((open) => !open)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-900 transition hover:border-slate-300"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-200"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -84,14 +84,14 @@ function NavView(props: {
         </div>
 
         {isOpen && (
-          <div className="border-t border-slate-200 py-4 md:hidden">
+          <div className="mt-3 rounded-3xl border border-cyan-400/15 bg-slate-950/85 p-4 shadow-[0_24px_60px_-32px_rgba(2,6,23,0.95)] backdrop-blur-xl md:hidden">
             <div className="grid gap-2">
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
+                  className="rounded-2xl px-4 py-3 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-cyan-200"
                 >
                   {item.label}
                 </Link>
@@ -100,7 +100,7 @@ function NavView(props: {
                 href="/resume.pdf"
                 target="_blank"
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                className="tech-button-muted justify-center"
               >
                 Resume
               </Link>

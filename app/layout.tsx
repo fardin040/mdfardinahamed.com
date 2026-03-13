@@ -1,10 +1,24 @@
 import './globals.css'
 import React from 'react'
+import { Inter, Poppins } from 'next/font/google'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { TinaNav } from '../components/Nav'
 import { TinaFooter } from '../components/Footer'
 import { getHomeDocument } from '../lib/tina-content'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  weight: ['500', '600', '700', '800'],
+  display: 'swap',
+})
 
 export const metadata = {
   metadataBase: new URL('https://mdfardinahamed.com'),
@@ -60,7 +74,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const homeDocument = await getHomeDocument()
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
       <body className="font-sans">
         <div className="min-h-screen flex flex-col pt-16">
           {homeDocument ? (

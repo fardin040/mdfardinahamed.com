@@ -31,16 +31,16 @@ function PostShell(props: {
   return (
     <article className="section-shell fade-in">
       <div className="container max-w-5xl">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-slate-600 transition-colors hover:text-slate-950">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-cyan-200">
           <ArrowLeft className="h-4 w-4" />
           Back to blog
         </Link>
 
-        <div className="mt-8 border-b border-slate-200 pb-8">
+        <div className="mt-8 border-b border-slate-800 pb-8">
           <p className="text-xs uppercase tracking-[0.16em] text-slate-500" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'category') : undefined}>
             {category || 'Blog'}
           </p>
-          <h1 className="mt-4 font-heading text-3xl font-bold leading-tight text-slate-950 md:text-5xl" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'title') : undefined}>
+          <h1 className="mt-4 font-heading text-4xl font-black leading-tight text-white md:text-6xl" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'title') : undefined}>
             {title}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
@@ -48,11 +48,11 @@ function PostShell(props: {
               <Clock3 className="h-4 w-4" />
               {date}
             </span>
-            {description ? <span className="max-w-2xl text-slate-600" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'description') : undefined}>{description}</span> : null}
+            {description ? <span className="max-w-2xl text-slate-300" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'description') : undefined}>{description}</span> : null}
           </div>
           <div className="mt-5 flex flex-wrap gap-2">
             {tags.map((tag, index) => (
-              <span key={tag} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-700" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'tags', index) : undefined}>
+              <span key={tag} className="rounded-full border border-cyan-400/12 bg-cyan-400/8 px-3 py-1 text-xs text-cyan-100" data-tina-field={tinaDocument ? tinaField(tinaDocument, 'tags', index) : undefined}>
                 {tag}
               </span>
             ))}

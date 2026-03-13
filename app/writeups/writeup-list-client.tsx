@@ -46,7 +46,7 @@ function WriteupListView(props: { writeups: Entry[]; connection?: WriteupsConnec
           {writeups.map((entry, index) => (
             <article
               key={entry.slug}
-              className="panel flex h-full flex-col"
+              className="panel glow-border flex h-full flex-col"
               data-tina-field={connection ? tinaField(connection.edges?.[index]?.node) : undefined}
             >
               <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-slate-500">
@@ -54,16 +54,16 @@ function WriteupListView(props: { writeups: Entry[]; connection?: WriteupsConnec
                 <span className="h-1 w-1 rounded-full bg-slate-400" />
                 <span>{entry.date}</span>
               </div>
-              <h2 className="font-heading text-2xl font-bold text-slate-950">{entry.title}</h2>
-              <p className="mt-4 flex-grow text-sm leading-7 text-slate-600">{entry.description}</p>
+              <h2 className="font-heading text-3xl font-bold text-white">{entry.title}</h2>
+              <p className="mt-4 flex-grow text-sm leading-7 text-slate-300">{entry.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {entry.tags?.map((tag) => (
-                  <span key={tag} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-700">
+                  <span key={tag} className="rounded-full border border-cyan-400/12 bg-cyan-400/8 px-3 py-1 text-xs text-cyan-100">
                     {tag}
                   </span>
                 ))}
               </div>
-              <Link href={`/writeups/${entry.slug}`} className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-slate-950">
+              <Link href={`/writeups/${entry.slug}`} className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-cyan-200">
                 Read writeup
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
