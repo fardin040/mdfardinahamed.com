@@ -53,14 +53,9 @@ export const metadata = {
   }
 }
 
-import { Inter, Outfit } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
+    <html lang="en" className="scroll-smooth">
       <body className="font-sans">
         <div className="min-h-screen flex flex-col pt-16">
           <Nav />

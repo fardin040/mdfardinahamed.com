@@ -1,15 +1,17 @@
 import { defineConfig } from "tinacms";
 
-// Your hosting provider likely exposes this as an environment variable
 const branch =
+  process.env.NEXT_PUBLIC_TINA_BRANCH ||
+  (process.env.VERCEL_ENV === 'production'
+    ? process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || process.env.VERCEL_GIT_COMMIT_REF
+    : undefined) ||
   process.env.GITHUB_BRANCH ||
-  process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
   "main";
 
 export default defineConfig({
   branch,
-  // Dummy tokens to satisfy TypeScript; CLI validation bypassed via NEXT_PUBLIC_TINA_CLIENT_ID='' in package.json
+  // Fallback placeholders keep local generation working until real Tina Cloud env vars are set.
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "00000000-0000-0000-0000-000000000000",
   token: process.env.TINA_TOKEN || "000000000000000000000000000000000000000",
 
