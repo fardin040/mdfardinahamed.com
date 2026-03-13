@@ -1,8 +1,4 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npx tinacms build && npx next build",
-  "env": {
-    "NEXT_PUBLIC_TINA_CLIENT_ID": "bc3008a1-68d1-4152-a060-6c75296496c5",
-    "TINA_TOKEN": "86983625b2ab8d05b12561995b708ec1a7667a9c"
-  }
+  "buildCommand": "npm run build"
 }
