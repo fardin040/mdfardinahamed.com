@@ -77,7 +77,7 @@ Important environment variables
 - `FORMSPREE_ENDPOINT` — (optional) The Formspree endpoint URL (e.g. `https://formspree.io/f/your-id`). When set, contact form submissions will be forwarded to this endpoint from the serverless function. If not set, submissions will be logged in the server logs for testing.
 - `NEXT_PUBLIC_TINA_CLIENT_ID` — Required for Tina editing on Vercel.
 - `TINA_TOKEN` — Required for Tina content API access during the Vercel build and runtime.
-- `NEXT_PUBLIC_TINA_BRANCH` — Optional if you want to pin the Tina branch explicitly.
+- `NEXT_PUBLIC_TINA_BRANCH` — Optional if you want to pin the Tina branch explicitly. If unset, preview builds fall back to `main` so Tina Cloud does not reject temporary preview branch names.
 
 1. Deploy — Vercel will run `npm run build` automatically.
 
