@@ -1,7 +1,7 @@
 ```markdown
 # mdfardinahamed.com
 
-Personal portfolio for Md Fardin Ahamed — built with Next.js (App Router) and Tailwind CSS. Clean, responsive, and optimized for MSc applications and cybersecurity recruiters.
+Personal portfolio for Md Fardin Ahamed — built with Next.js (App Router) and Tailwind CSS. Clean, responsive, and optimized for MSc applications, cybersecurity recruiters, and technical research visibility.
 
 Quick setup
 
@@ -35,12 +35,15 @@ Project notes
 
 - Replace the placeholder resume at `public/resume.pdf` with your final PDF.
 - Update contact info (email, LinkedIn, GitHub) in `app/page.tsx` and/or `components/ContactForm.tsx`.
-- Blog posts live in `content/blog/*.md` — add new Markdown files with frontmatter (title, date, description).
-- The blog uses server-side Markdown rendering via `lib/markdown.ts`.
+- Blog posts live in `content/blog/*.md`.
+- Technical writeups live in `content/writeups/*.md`.
+- Both collections support frontmatter fields such as `title`, `date`, `description`, `category`, and `tags`.
+- Markdown content is rendered server-side through `lib/markdown.ts`.
 
 Contact form
 
-- The shipped `components/ContactForm.tsx` is configured to post to Formspree (placeholder). Replace the `action` URL with your Formspree endpoint or wire a serverless function.
+- The contact form posts to the internal API route at `/api/contact`.
+- Set `FORMSPREE_ENDPOINT` if you want the serverless route to forward submissions to Formspree. If it is not set, the payload is logged on the server for testing.
 
 Theme and styling
 
@@ -49,7 +52,8 @@ Theme and styling
 
 SEO & metadata
 
-- Global `app/head.tsx` contains default meta tags and Open Graph placeholders — update these as needed for applications.
+- Global metadata is defined in `app/layout.tsx`.
+- Open Graph preview uses `public/og-preview.svg`.
 
 Deployment (Vercel)
 
@@ -66,13 +70,13 @@ Deployment (Vercel)
 Notes for reviewers / maintainers
 
 - Replace placeholder `public/resume.pdf` before sharing with recruiters or MSc programs.
-- Replace `fardin@example.com` in `app/page.tsx` with the professional email.
+- Update any placeholder project repository URLs in `data/projects.ts` if your final GitHub repo names differ.
 - Consider adding automated linting and GitHub Actions for CI.
 
 If you want, I can:
 
 - Install dependencies and start the dev server locally.
-- Replace the contact form with a serverless API route.
+- Replace the placeholder `public/resume.pdf` with the final resume PDF.
 - Add more polished copy for the About/Resume/Projects sections.
 
 ```

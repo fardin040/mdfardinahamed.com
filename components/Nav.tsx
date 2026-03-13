@@ -13,8 +13,9 @@ export default function Nav() {
         <nav className="hidden md:flex items-center gap-6">
           <Link href="/#about" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">About</Link>
           <Link href="/#projects" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Projects</Link>
+          <Link href="/writeups" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Writeups</Link>
           <Link href="/blog" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Blog</Link>
-          <Link href="/resume.txt" target="_blank" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Resume</Link>
+          <Link href="/resume.pdf" target="_blank" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">Resume</Link>
           <div className="h-4 w-px bg-border mx-2"></div>
           <ThemeColorPicker />
           <ThemeToggle />

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#07131F"/>
+  <text x="64" y="84" fill="#FFFFFF" font-size="28" font-family="Courier New">Scan Output</text>
+  <rect x="64" y="116" width="672" height="320" rx="18" fill="#0B1726" stroke="#21394D"/>
+  <g fill="#D6F7F4" font-size="20" font-family="Courier New">
+    <text x="88" y="170">Target: 192.168.1.20</text>
+    <text x="88" y="214">22/tcp    open      ssh</text>
+    <text x="88" y="254">80/tcp    open      http</text>
+    <text x="88" y="294">443/tcp   filtered  https</text>
+    <text x="88" y="334">445/tcp   closed    microsoft-ds</text>
+    <text x="88" y="390">Completed in 2.31s</text>
+  </g>
+</svg>

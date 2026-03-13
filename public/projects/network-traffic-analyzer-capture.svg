@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#09182C"/>
+  <rect x="40" y="40" width="720" height="420" rx="22" fill="#0E233D" stroke="#214363"/>
+  <text x="66" y="82" fill="#E8F2FB" font-size="28" font-family="Arial">Packet Capture Snapshot</text>
+  <rect x="66" y="112" width="668" height="36" rx="12" fill="#0B2C4C"/>
+  <text x="84" y="136" fill="#9DC3E5" font-size="18" font-family="Arial">No.   Time       Source         Destination    Protocol   Info</text>
+  <g font-family="Arial" font-size="18">
+    <text x="84" y="188" fill="#F6FBFF">12    0.312      10.0.0.15      8.8.8.8        DNS        Standard query A example.com</text>
+    <text x="84" y="228" fill="#F6FBFF">13    0.369      8.8.8.8        10.0.0.15      DNS        Standard query response</text>
+    <text x="84" y="268" fill="#F6FBFF">14    0.802      10.0.0.12      10.0.0.8       TCP        52144 → 443 [SYN]</text>
+    <text x="84" y="308" fill="#F6FBFF">15    0.825      10.0.0.8       10.0.0.12      TCP        443 → 52144 [SYN, ACK]</text>
+    <text x="84" y="348" fill="#F6FBFF">16    0.839      10.0.0.12      10.0.0.8       TCP        52144 → 443 [ACK]</text>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#081427"/>
+  <text x="64" y="82" fill="#FFFFFF" font-size="28" font-family="Arial">SYN Scan Sequence</text>
+  <text x="120" y="140" fill="#9CC1DF" font-size="22" font-family="Arial">Scanner</text>
+  <text x="570" y="140" fill="#9CC1DF" font-size="22" font-family="Arial">Target Host</text>
+  <path d="M170 180V400" stroke="#365270" stroke-width="4"/>
+  <path d="M620 180V400" stroke="#365270" stroke-width="4"/>
+  <path d="M190 220H598" stroke="#2AC6BE" stroke-width="6" stroke-linecap="round"/>
+  <path d="M598 270H190" stroke="#8FB6D7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M190 320H598" stroke="#2AC6BE" stroke-width="6" stroke-linecap="round"/>
+  <text x="310" y="208" fill="#FFFFFF" font-size="18" font-family="Arial">SYN</text>
+  <text x="334" y="258" fill="#FFFFFF" font-size="18" font-family="Arial">SYN/ACK</text>
+  <text x="344" y="308" fill="#FFFFFF" font-size="18" font-family="Arial">RST</text>
+</svg>

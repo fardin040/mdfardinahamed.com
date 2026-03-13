@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#09182C"/>
+  <text x="64" y="82" fill="#FFFFFF" font-size="28" font-family="Arial">System Event View</text>
+  <rect x="64" y="116" width="672" height="308" rx="18" fill="#0C1726" stroke="#22394D"/>
+  <g fill="#E8F5F4" font-size="20" font-family="Courier New">
+    <text x="90" y="170">[10:21:02] cpu_spike      pid=1934    value=87%</text>
+    <text x="90" y="214">[10:21:14] mem_growth     pid=1934    delta=380MB</text>
+    <text x="90" y="258">[10:21:44] io_activity    proc=backupd level=high</text>
+    <text x="90" y="302">[10:22:08] new_process    proc=python3 parent=bash</text>
+  </g>
+</svg>

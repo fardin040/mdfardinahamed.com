@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#081427"/>
+  <rect x="36" y="36" width="728" height="428" rx="22" fill="#0F1E36" stroke="#1F3655"/>
+  <text x="64" y="86" fill="#EAF4FF" font-size="30" font-family="Arial">Network Traffic Analyzer</text>
+  <rect x="64" y="120" width="672" height="56" rx="14" fill="#0B2B4E"/>
+  <text x="88" y="156" fill="#BBD2EA" font-size="20" font-family="Arial">Capture summary: TCP 58%  DNS 19%  HTTP 13%  Other 10%</text>
+  <rect x="64" y="208" width="300" height="200" rx="18" fill="#102B47"/>
+  <rect x="392" y="208" width="344" height="200" rx="18" fill="#102B47"/>
+  <polyline points="92,358 132,330 172,342 212,286 252,268 292,242 332,224" stroke="#30C7BE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="424" y="250" fill="#9EC0DE" font-size="18" font-family="Arial">Top conversations</text>
+  <text x="424" y="292" fill="#F6FBFF" font-size="20" font-family="Arial">10.0.0.12 → 10.0.0.8 : 443</text>
+  <text x="424" y="328" fill="#F6FBFF" font-size="20" font-family="Arial">10.0.0.15 → 8.8.8.8 : 53</text>
+  <text x="424" y="364" fill="#F6FBFF" font-size="20" font-family="Arial">10.0.0.9  → 10.0.0.2 : 80</text>
+</svg>

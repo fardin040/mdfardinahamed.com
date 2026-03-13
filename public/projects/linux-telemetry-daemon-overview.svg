@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#081427"/>
+  <rect x="48" y="48" width="704" height="404" rx="22" fill="#0F2037" stroke="#1E3657"/>
+  <text x="72" y="92" fill="#FFFFFF" font-size="30" font-family="Arial">Linux Telemetry Daemon</text>
+  <rect x="72" y="126" width="208" height="132" rx="18" fill="#102B47"/>
+  <rect x="296" y="126" width="208" height="132" rx="18" fill="#102B47"/>
+  <rect x="520" y="126" width="208" height="132" rx="18" fill="#102B47"/>
+  <text x="98" y="168" fill="#9EC0DE" font-size="18" font-family="Arial">CPU Usage</text>
+  <text x="114" y="214" fill="#FFFFFF" font-size="32" font-family="Arial">27%</text>
+  <text x="322" y="168" fill="#9EC0DE" font-size="18" font-family="Arial">Memory</text>
+  <text x="332" y="214" fill="#FFFFFF" font-size="32" font-family="Arial">3.8 GB</text>
+  <text x="556" y="168" fill="#9EC0DE" font-size="18" font-family="Arial">Processes</text>
+  <text x="580" y="214" fill="#FFFFFF" font-size="32" font-family="Arial">142</text>
+  <rect x="72" y="286" width="656" height="124" rx="18" fill="#0A1728"/>
+  <text x="96" y="334" fill="#DDFDFC" font-size="20" font-family="Courier New">load=0.41  swap=0%  top_process=python  events=normal</text>
+</svg>

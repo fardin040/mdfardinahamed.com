@@ -121,6 +121,64 @@
   }
 }
 
+.article-content {
+  line-height: 1.8;
+}
+
+.article-content h2,
+.article-content h3 {
+  @apply font-heading font-semibold text-foreground;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-content h2 {
+  @apply text-2xl;
+}
+
+.article-content h3 {
+  @apply text-xl;
+}
+
+.article-content p,
+.article-content ul,
+.article-content ol {
+  @apply text-muted-foreground;
+  margin-bottom: 1rem;
+}
+
+.article-content ul,
+.article-content ol {
+  padding-left: 1.25rem;
+}
+
+.article-content ul {
+  list-style: disc;
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content pre {
+  @apply bg-slate-950 text-slate-100 rounded-2xl border border-slate-800 overflow-x-auto;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.article-content code {
+  @apply font-mono text-sm;
+}
+
+.article-content p code,
+.article-content li code {
+  @apply bg-secondary text-foreground rounded px-1.5 py-0.5 border border-border/50;
+}
+
+.article-content a {
+  @apply text-primary font-medium;
+}
+
 /* subtle animations */
 .fade-in {
   animation: fadeIn 800ms cubic-bezier(0.16, 1, 0.3, 1) both;

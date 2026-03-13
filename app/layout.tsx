@@ -9,15 +9,29 @@ export const metadata = {
     default: 'Md Fardin Ahamed',
     template: '%s | Md Fardin Ahamed'
   },
-  description: 'Electronics & Telecommunication Engineering student pursuing MSc in Cybersecurity',
-  keywords: ['Md Fardin Ahamed', 'Cybersecurity', 'Telecommunication Engineering', 'Network Security', 'Portfolio'],
+  description: 'Md Fardin Ahamed is a cybersecurity-focused engineering student from Bangladesh building a professional portfolio in network security, protocol analysis, digital forensics, and security research.',
+  keywords: ['Md Fardin Ahamed', 'Fardin Ahamed', 'Cybersecurity', 'Telecommunication Engineering', 'Network Security', 'Protocol Analysis', 'Digital Forensics', 'Security Research Portfolio'],
   openGraph: {
-    title: 'Md Fardin Ahamed',
-    description: 'Electronics & Telecommunication Engineering student pursuing MSc in Cybersecurity',
+    title: 'Md Fardin Ahamed | Cybersecurity Portfolio',
+    description: 'Professional cybersecurity portfolio featuring projects, technical writeups, research notes, and academic goals focused on MSc study and security engineering.',
     url: 'https://mdfardinahamed.com',
     siteName: 'Md Fardin Ahamed',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/og-preview.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Md Fardin Ahamed cybersecurity portfolio preview'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Md Fardin Ahamed | Cybersecurity Portfolio',
+    description: 'Projects, writeups, research notes, and MSc-focused cybersecurity portfolio.',
+    images: ['/og-preview.svg']
   },
   robots: {
     index: true,

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="28" fill="#081427"/>
+  <rect x="40" y="48" width="720" height="404" rx="24" fill="#0E223B" stroke="#1F3655"/>
+  <text x="64" y="92" fill="#F8FBFF" font-size="30" font-family="Arial">Custom Port Scanner</text>
+  <rect x="64" y="130" width="672" height="280" rx="18" fill="#07121F"/>
+  <text x="86" y="176" fill="#9BC2E2" font-size="20" font-family="Courier New">$ ./scanner 10.10.10.10 -p 22,80,443,8080</text>
+  <text x="86" y="224" fill="#E8F5F4" font-size="20" font-family="Courier New">[+] 22/tcp   open    ssh</text>
+  <text x="86" y="260" fill="#E8F5F4" font-size="20" font-family="Courier New">[+] 80/tcp   open    http</text>
+  <text x="86" y="296" fill="#E8F5F4" font-size="20" font-family="Courier New">[-] 443/tcp  filtered</text>
+  <text x="86" y="332" fill="#E8F5F4" font-size="20" font-family="Courier New">[-] 8080/tcp closed</text>
+</svg>

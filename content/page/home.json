@@ -8,12 +8,12 @@
     "subheadlineLine2": "Prospective MSc Cybersecurity Candidate",
     "description": "Bridging the gap between telecommunications infrastructure and advanced network security. Passionate about protocol analysis, digital forensics, and building resilient systems.",
     "primaryCta": {
-      "text": "Explore Research",
+      "text": "View Projects",
       "link": "#projects"
     },
     "secondaryCta": {
-      "text": "View Curriculum Vitae",
-      "link": "/resume.txt"
+      "text": "Download Resume",
+      "link": "/resume.pdf"
     }
   },
   "about": {
@@ -143,7 +143,7 @@
   },
   "footer": {
     "name": "Md Fardin Ahamed",
-    "tagline": "Electronics & Telecommunication Engineering",
-    "subTagline": "Designed for MSc applications and cybersecurity recruiters."
+    "tagline": "Cybersecurity Enthusiast",
+    "subTagline": "Professional portfolio for security engineering, technical research, and MSc applications."
   }
 }
